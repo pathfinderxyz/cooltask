@@ -21,6 +21,7 @@ import axios from "axios";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import SelectList from "react-native-dropdown-select-list";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import ListemSaldo from "../componentes/ListemSaldo";
 
 /* const NavigatetoDetails = props => {
   props.navigation.navigate('GameDetails');
@@ -65,7 +66,7 @@ const Home = ({ navigation }) => {
   const peticionGet = async () => {
     setCargando(true);
       await axios.get(url).then((response) => {
-      setData(response.data);
+      setData(response.data[0]);
       setCargando(false);
     
     });
@@ -98,102 +99,15 @@ const Home = ({ navigation }) => {
       <LinearGradient
         // Background Linear Gradient
 
-        colors={["#0a1d60", "transparent"]}
+        colors={["#fff"]}
         style={styles.background}
       />
 
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "space-between",
-          marginBottom: 10,
-          marginTop: 38,
-        }}
-      >
-        <TouchableOpacity onPress={() => navigation.openDrawer()}>
-          <Ionicons
-            name="menu"
-            size={27}
-            color="#fff"
-            style={{ padding: 14 }}
-          />
-        </TouchableOpacity>
-        <Text
-          style={{
-            fontSize: 19,
-            color: "#fff",
-            padding: 14,
-          }}
-        >
-          Inicio
-        </Text>
-
-        <TouchableOpacity onPress={() => setModalVisible(true)}>
-          <MaterialIcons
-            name="filter-alt"
-            size={24}
-            color="#fff"
-            style={{ padding: 14 }}
-          />
-        </TouchableOpacity>
-      </View>
-
       <ScrollView>
-        <Text
-          style={{
-            fontSize: 22,
-            color: "#fff",
-            padding: 14,
-          }}
-        >
-         Anuncios disponibles
-        </Text>
-        <View style={{
-          flexDirection: "row",
-          justifyContent: "space-between",
-        }}>
-        <Text
-          style={{
-            fontSize: 15,
-            color: "#fff",
-            marginLeft: 14,
-            marginBottom: 20,
-          }}
-        >
-          Encuentre el servicio que desee
-        </Text>
-        <TouchableOpacity onPress={peticionGet}>
-          <Ionicons
-            name="reload"
-            size={19}
-            color="#fff"
-            style={{ paddingRight: 17 }}
-          />
-        </TouchableOpacity>
-        </View>
-        {cargando ===true ? 
-          <Text
-          style={{
-            fontSize: 18,
-            color: "#fff",
-            padding: 14,
-            textAlign:"center"
-          }}
-        >
-         Cargando...
-        </Text>
-        :
-        gamesTab == 1 &&
-          data
-            .sort((a, b) => b.id - a.id)
-            .map((item) => (
-              <ListItemHome
-                key={item.id}
-                title={item.nombre}
-                subTitle={item.descripcion}
-                pais={item.pais}
-                ciudad={item.ciudad}
-                price={item.precio}
+      
+              <ListemSaldo
+                
+                
                 onPress={() =>
                   navigation.navigate('detalless', {
                     title: item.nombre,
@@ -205,101 +119,9 @@ const Home = ({ navigation }) => {
                   })
                 }
               />
-            ))
-            }
+            
+          
       </ScrollView>
-
-      <View style={styles.centeredView}>
-        <Modal
-          animationType="fade"
-          transparent={true}
-          visible={modalVisible}
-          statusBarTranslucent={true}
-          onRequestClose={() => {
-            Alert.alert("Modal has been closed.");
-            setModalVisible(!modalVisible);
-          }}
-        >
-          <View style={styles.centeredView}>
-            <View style={styles.modalView}>
-              <Text style={styles.modalText}>
-                Filtre la categoria del servicio y el pais que busca:
-              </Text>
-
-              <SelectList
-                setSelected={setSelectedCat}
-                data={datacategoria}
-                searchPlaceholder="Seleccione"
-                arrowicon={
-                  <Ionicons name="chevron-down" size={16} color={"#000"} />
-                }
-                searchicon={
-                  <Ionicons
-                    name="ios-lock-closed-outline"
-                    size={20}
-                    color={"#000"}
-                  />
-                }
-                search={false}
-                boxStyles={{
-                  borderRadius: 5,
-                  borderTop: 0,
-                  borderLeft: 0,
-                  borderRight: 0,
-                  borderColor: "#ccc",
-                  marginBottom: 15,
-                }} //override default styles
-                inputStyles={{ color: "#000" }}
-                dropdownTextStyles={{ color: "#000" }}
-                defaultOption={{ key: "todos", value: "Categoria del servicio" }} //default selected option
-              />
-
-              <SelectList
-                setSelected={setSelectedPais}
-                data={datapais}
-                searchPlaceholder="Seleccione"
-                arrowicon={
-                  <Ionicons name="chevron-down" size={16} color={"#000"} />
-                }
-                searchicon={
-                  <Ionicons
-                    name="ios-lock-closed-outline"
-                    size={20}
-                    color={"#000"}
-                  />
-                }
-                search={false}
-                boxStyles={{
-                  borderRadius: 5,
-                  borderTop: 0,
-                  borderLeft: 0,
-                  borderRight: 0,
-                  borderColor: "#ccc",
-                  marginBottom: 15,
-                }} //override default styles
-                inputStyles={{ color: "#000" }}
-                dropdownTextStyles={{ color: "#000" }}
-                defaultOption={{ key: "todos", value: "Seleccione un pais" }} //default selected option
-              />
-
-              <View style={{flexDirection: 'row',justifyContent: 'space-between'}}>
-              <Pressable
-                style={[styles.button, styles.buttonClose]}
-                onPress={() => setModalVisible(!modalVisible)}
-              >
-                <Text style={styles.textStyle}>Cerrar</Text>
-              </Pressable>
-              <Pressable
-                style={[styles.button, styles.buttonfiltrar]}
-                onPress={peticionGetFiltro}
-              >
-                <Text style={styles.textStyle}>filtrar</Text>
-              </Pressable>
-              </View>
-            </View>
-          </View>
-        </Modal>
-      </View>
     </View>
   );
 };
@@ -307,7 +129,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    backgroundColor: "#07092c",
+    backgroundColor: "#fff",
   },
   background: {
     position: "absolute",

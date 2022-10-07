@@ -7,6 +7,7 @@ import MyDrawer from './drawer';
 import { AuthContext } from './../context/AuthContext';
 import Home from '../screens/home';
 import Start2 from './start2';
+import Tabs from './tabs';
 
 const AppNav = () => {
    
@@ -22,7 +23,7 @@ const AppNav = () => {
   console.log('Valor de token', userToken);
   return (
     <NavigationContainer>
-        {userToken == null || userToken == undefined ? <Start/>: <MyDrawer/> }
+        {userToken == null || userToken == undefined ? <Start/>: <Tabs/> }
     </NavigationContainer>
   );
 }
