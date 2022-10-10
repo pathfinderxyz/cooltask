@@ -1,7 +1,7 @@
 import React from 'react'
 import { SafeAreaView,StyleSheet, View, Text,Image, TouchableOpacity } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import Favicon from './../assets/img/logo.png';
+import Favicon from './../assets/logo/coollogo.png';
 import { LinearGradient } from 'expo-linear-gradient';
 
 const Onboarding = ({ navigation }) => {
@@ -10,7 +10,7 @@ const Onboarding = ({ navigation }) => {
     <LinearGradient
         // Background Linear Gradient
       
-        colors={['#0a1d60', 'transparent']}
+        colors={['#1c1b3c', 'transparent']}
         style={styles.background}
       />
       

@@ -12,24 +12,13 @@ import Login from './../screens/login';
 import Tabs from './tabs';
 import CustomDrawer from './../componentes/CustomDrawer';
 import Home from '../screens/home';
-import Chat from '../screens/chat';
-import Soporte from '../screens/soporte';
-import CrearAnuncio from '../screens/crearanuncio';
-import AnuncioRegistrado from '../screens/anuncioregistrado';
-import Config from '../screens/settings';
-import GameDetailsScreen from '../screens/DetallesJuegos';
-import MembresiaFree from '../screens/membresias/MembresiaFree';
-import MembresiaPremium from '../screens/membresias/MenbresiaPremium';
-import MisDatos from '../screens/Cuenta/MisDatos';
-import CambiarEmail from '../screens/Cuenta/CambiarEmail';
-import CambiarPass from '../screens/Cuenta/CambiarPass';
-import Notificacion from '../screens/Cuenta/Notificaciones';
-import HistorialServicios from '../screens/Cuenta/Historial';
-import Estado from '../screens/Cuenta/Estado';
-import Detalless from '../screens/detalles2';
+import Compartir from '../screens/cooltask/compartir';
+import Billetera from '../screens/cooltask/billetera';
+import Retiro from '../screens/cooltask/retiro';
+import Deposito from '../screens/cooltask/deposito';
+import Guia from '../screens/cooltask/guia';
+import Agentes from '../screens/cooltask/agentesexterno';
 import { AuthContext } from '../context/AuthContext';
-import PromoAnuncio from '../screens/promoanuncio';
-import EditarAnuncios from '../screens/editaranuncios';
 
 
 const Drawer = createDrawerNavigator();
@@ -63,99 +52,6 @@ function Root() {
 
         }}
       />
-
-      {userInfo[0].rol == 'cliente' ?
-
-        <Drawer.Screen
-          name="Crear Anuncio"
-          component={CrearAnuncio}
-          options={{
-            headerStyle: {
-              backgroundColor: '#0a1d60',
-            },
-            headerTintColor: '#fff',
-            headerShown: true,
-            drawerIcon: ({ color }) => (
-              <Ionicons name="add-outline" size={22} color={color} />
-            ),
-          }} />
-        :
-        <Drawer.Screen
-          name="Membresias"
-          component={Metodos}
-          options={{
-            headerStyle: {
-              backgroundColor: '#0a1d60',
-            },
-            headerTintColor: '#fff',
-            headerShown: true,
-            drawerIcon: ({ color }) => (
-              <Ionicons name="rocket-outline" size={22} color={color} />
-            ),
-          }} />
-      }
-
-      {userInfo[0].rol == 'cliente' && (
-        <Drawer.Screen
-          name="Misanuncios"
-          component={Config}
-          options={{
-            headerStyle: {
-              backgroundColor: '#0a1d60',
-            },
-            title: "Mis Anuncios",
-            headerTintColor: '#fff',
-            headerShown: true,
-            drawerIcon: ({ color }) => (
-              <Ionicons name="albums-outline" size={22} color={color} />
-            ),
-          }} />)}
-
-      {userInfo[0].rol == 'cliente' && (
-        <Drawer.Screen
-          name="Resaltar anuncio"
-          component={PromoAnuncio}
-          options={{
-            headerStyle: {
-              backgroundColor: '#0a1d60',
-            },
-            title: "Resaltar Anuncios",
-            headerTintColor: '#fff',
-            headerShown: true,
-            drawerIcon: ({ color }) => (
-              <Ionicons name="ios-medal-outline" size={22} color={color} />
-            ),
-          }} />)}
-
-
-      <Drawer.Screen
-        name="Chat"
-        component={Chat}
-        options={{
-          headerStyle: {
-            backgroundColor: '#0a1d60',
-          },
-          headerTintColor: '#fff',
-          headerShown: true,
-          drawerIcon: ({ color }) => (
-            <Ionicons name="chatbox-ellipses-outline" size={22} color={color} />
-          ),
-        }} />
-      <Drawer.Screen
-        name="Soporte"
-        component={Soporte}
-        options={{
-          headerStyle: {
-            backgroundColor: '#0a1d60',
-          },
-          headerTintColor: '#fff',
-          headerShown: true,
-          drawerIcon: ({ color }) => (
-            <Ionicons name="people-outline" size={22} color={color} />
-          ),
-        }} />
-
-
     </Drawer.Navigator>
   );
 }
@@ -164,103 +60,63 @@ export default function MyDrawer() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Root" component={Root} options={{ headerShown: false }} />
-      <Stack.Screen name="Membresia Free" component={MembresiaFree}
-        title='Membresia Free'
-        options={{
-          headerShown: true,
-          headerStyle: { backgroundColor: '#0a1d60', },
-          headerTintColor: '#fff',
-        }}
-      />
-      <Stack.Screen name="Membresia Premium" component={MembresiaPremium}
-        title='Membresia Premium'
-        options={{
-          headerShown: true,
-          headerStyle: { backgroundColor: '#0a1d60', },
-          headerTintColor: '#fff',
-        }}
-      />
-      <Stack.Screen name="MisDatos" component={MisDatos}
+
+      <Stack.Screen name="Compartir" component={Compartir}
 
         options={{
           headerShown: true,
-          title: 'Mis Datos',
+          title: 'Compartir',
           headerStyle: { backgroundColor: '#0a1d60', },
           headerTintColor: '#fff',
         }}
       />
 
-      <Stack.Screen name="CambiarEmail" component={CambiarEmail}
+      <Stack.Screen name="Billetera" component={Billetera}
 
         options={{
           headerShown: true,
-          title: 'Cambiar Datos',
+          title: 'Billetera',
           headerStyle: { backgroundColor: '#0a1d60', },
           headerTintColor: '#fff',
         }}
       />
-      <Stack.Screen name="CambiarPass" component={CambiarPass}
+      <Stack.Screen name="Retiro" component={Retiro}
 
         options={{
           headerShown: true,
-          title: 'Contraseña',
+          title: 'Retiro',
           headerStyle: { backgroundColor: '#0a1d60', },
           headerTintColor: '#fff',
         }}
       />
-      <Stack.Screen name="Notificacion" component={Notificacion}
+      <Stack.Screen name="Deposito" component={Deposito}
 
         options={{
           headerShown: true,
-          title: 'Notificaciones',
+          title: 'Deposito',
           headerStyle: { backgroundColor: '#0a1d60', },
           headerTintColor: '#fff',
         }}
       />
-      <Stack.Screen name="Historial" component={HistorialServicios}
+      <Stack.Screen name="Guia" component={Guia}
 
         options={{
           headerShown: true,
-          title: 'Historial',
+          title: 'Guia de usuario',
           headerStyle: { backgroundColor: '#0a1d60', },
           headerTintColor: '#fff',
         }}
       />
-      <Stack.Screen name="Estado" component={Estado}
+      <Stack.Screen name="Agentes" component={Agentes}
 
         options={{
           headerShown: true,
-          title: 'Estado',
-          headerStyle: { backgroundColor: '#0a1d60', },
-          headerTintColor: '#fff',
-        }}
-      />
-      <Stack.Screen name="detalless" component={Detalless}
-
-        options={{
-          headerShown: true,
-          title: 'Detalles',
+          title: 'Agentes',
           headerStyle: { backgroundColor: '#0a1d60', },
           headerTintColor: '#fff',
         }}
       />
 
-      <Stack.Screen name="RegistroExitoso" component={AnuncioRegistrado}
-        options={{
-          headerShown: true,
-          title: 'Registro Exitoso',
-          headerStyle: { backgroundColor: '#0a1d60', },
-          headerTintColor: '#fff',
-        }}
-      />
-       <Stack.Screen name="EditarAnuncio" component={EditarAnuncios}
-        options={{
-          headerShown: true,
-          title: 'Editar Anuncio',
-          headerStyle: { backgroundColor: '#0a1d60', },
-          headerTintColor: '#fff',
-        }}
-      />
     </Stack.Navigator>
   );
 }

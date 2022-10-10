@@ -23,7 +23,7 @@ const AppNav = () => {
   console.log('Valor de token', userToken);
   return (
     <NavigationContainer>
-        {userToken == null || userToken == undefined ? <Start/>: <Tabs/> }
+        {userToken == null || userToken == undefined ? <Start/>: <MyDrawer/> }
     </NavigationContainer>
   );
 }

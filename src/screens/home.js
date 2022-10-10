@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useContext, useEffect } from "react";
 import {
   Alert,
   Modal,
   View,
   Text,
   SafeAreaView,
+  Image,
   ScrollView,
   Pressable,
   ImageBackground,
@@ -22,6 +23,15 @@ import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import SelectList from "react-native-dropdown-select-list";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import ListemSaldo from "../componentes/ListemSaldo";
+import { windowWidth } from './../utils/Dimensions';
+import Compartir from './../assets/botones/boton_compartir.png';
+import Billetera from './../assets/botones/billeteraicono.png';
+import Retiro from './../assets/botones/retiro.png';
+import Deposito from './../assets/botones/deposito.png';
+import Guia from './../assets/botones/guia-icono.png';
+import Monedas from './../assets/botones/monedas.png';
+import Nivel1 from './../assets/niveles/nivel1.png';
+import { AuthContext } from '../context/AuthContext';
 
 /* const NavigatetoDetails = props => {
   props.navigation.navigate('GameDetails');
@@ -52,7 +62,7 @@ const datapais = [
   { key: "Venezuela", value: "Venezuela" }
 ];
 
-const Home = ({ navigation }) => {
+const Homeapp = ({ navigation }) => {
   const [gamesTab, setGamesTab] = useState(1);
   const [data, setData] = useState([]);
   const [selectedCat, setSelectedCat] = useState("");
@@ -61,130 +71,510 @@ const Home = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [cargando, setCargando] = useState(true);
 
+  const { userInfo } = useContext(AuthContext);
+
   console.log(data);
 
   const peticionGet = async () => {
     setCargando(true);
-      await axios.get(url).then((response) => {
+    await axios.get(url).then((response) => {
       setData(response.data[0]);
       setCargando(false);
-    
+
     });
   };
 
   const peticionGetFiltro = () => {
-      console.log(selectedCat);
-      console.log(selectedPais);
-      axios.post(urlfiltro, {selectedCat,selectedPais }).then((res) => {
+    console.log(selectedCat);
+    console.log(selectedPais);
+    axios.post(urlfiltro, { selectedCat, selectedPais }).then((res) => {
 
-        setData(res.data);
-        
-        setModalVisible(false);
-      })
+      setData(res.data);
+
+      setModalVisible(false);
+    })
       .catch((err) => {
         console.log(err);
         setModalVisible(false);
       });
   };
 
- console.log(data);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(async() => {
-    await peticionGet();
-  }, []);
+
 
   return (
+    <ScrollView>
     <View style={styles.container}>
-      <LinearGradient
-        // Background Linear Gradient
-
-        colors={["#fff"]}
-        style={styles.background}
-      />
-
-      <ScrollView>
-      
-              <ListemSaldo
-                
-                
-                onPress={() =>
-                  navigation.navigate('detalless', {
-                    title: item.nombre,
-                    id: item.id,
-                    descripcion:item.descripcion,
-                    pais:item.pais,
-                    ciudad:item.ciudad,
-                    precio:item.precio
-                  })
-                }
-              />
+       <View style={styles.container2}>
+        <View style={styles.listem}>
+        <View style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}>
+          <Text
+            style={{
+              color: '#fff',
+              fontSize: 15,
+              fontWeight: 'bold',
+              textTransform: 'uppercase',
+              marginBottom: 10,
+            }}>
+            {userInfo[0].nombre}
             
+          </Text>
+          <Image
+                source={Nivel1}
+                style={{ width: 60, height: 60 }}
+              />
+          </View>
+          <Text
+            style={{
+              color: '#fff',
+              fontSize: 16,
+              fontWeight: 'bold',
+              marginTop:-22
+            }}>
+            Saldo
+          </Text>
+          <View style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}>
+
+            <Text
+              style={{
+                color: '#fff',
+                fontWeight: 'bold',
+                fontSize: 27,
+              }}>
+              <Image
+                source={Monedas}
+                style={{ width: 30, height: 30 }}
+              />$120.00
+            </Text>
+            <Text
+              style={{
+                color: '#fff',
+                fontWeight: 'bold',
+                fontSize: 13,
+                marginTop: 11,
+              }}>
+              Superior
+            </Text>
+          </View>
+
+        </View>
+        </View>
+        <View style={styles.botones}>
+          <View style={{
+            flexDirection: "row",
+            paddingVertical: 14,
+          }}>
+            <View
+              style={{
+                fontWeight: 'bold',
+                fontSize: 19,
+                marginTop: 9,
+                color: '#fff',
+                padding: 5,
+                margin: 7,
+                borderRadius: 7,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+              <TouchableOpacity onPress={() =>navigation.navigate('Compartir')}>
+              <Image
+                source={Compartir}
+                style={{ width: 50, height: 50 }}
+              />
+              </TouchableOpacity>
+              <Text
+                style={{
+                  marginTop: 4,
+                  color: '#fff',
+                }}>
+                Compartir
+              </Text>
+            </View>
+            <View
+              style={{
+                color: '#fff',
+                fontWeight: 'bold',
+                fontSize: 19,
+                marginTop: 9,
+                padding: 5,
+                margin: 7,
+                borderRadius: 7,
+                justifyContent: 'center',
+                alignItems: 'center',
+
+              }}>
+                <TouchableOpacity onPress={() =>navigation.navigate('Billetera')}>
+              <Image
+                source={Billetera}
+                style={{ width: 50, height: 50 }}
+              />
+              </TouchableOpacity>
+              <Text
+                style={{
+                  marginTop: 4,
+                  color: '#fff',
+                }}>
+                Billetera
+              </Text>
+            </View>
+            <View
+              style={{
+                color: '#fff',
+                fontWeight: 'bold',
+                fontSize: 19,
+                marginTop: 9,
+                padding: 5,
+                margin: 7,
+                borderRadius: 7,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+                <TouchableOpacity onPress={() =>navigation.navigate('Retiro')}>
+              <Image
+                source={Retiro}
+                style={{ width: 50, height: 50 }}
+              /></TouchableOpacity>
+              <Text
+                style={{
+                  marginTop: 4,
+                  color: '#fff',
+                }}>
+                Retiro
+              </Text>
+            </View>
+            <View
+              style={{
+                color: '#fff',
+                fontWeight: 'bold',
+                fontSize: 19,
+                marginTop: 9,
+                padding: 5,
+                margin: 7,
+                borderRadius: 7,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+                <TouchableOpacity onPress={() =>navigation.navigate('Deposito')}>
+              <Image
+                source={Deposito}
+                style={{ width: 50, height: 50 }}
+              /></TouchableOpacity>
+              <Text
+                style={{
+                  marginTop: 4,
+                  color: '#fff',
+                }}>
+                Deposito
+              </Text>
+            </View>
+          </View>
+        </View>
+
+        <View style={styles.listemguia}>
+          <Text
+            style={{
+              color: '#000',
+              fontSize: 15,
+              fontWeight: 'bold',
+              textTransform: 'uppercase',
+              marginBottom: 10,
+            }}>
+            Guia para principiantes
+          </Text>
+
+
+          <View style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}>
+            <Text
+              style={{
+                color: '#2c2c2c',
+                fontSize: 12,
+                marginTop: 9,
+              }}>
+              Te explicamos todas las diferentes {'\n'}formas de ganar dinero{'\n'} con CoolTask.{'\n'}{'\n'}
+              <TouchableOpacity onPress={() =>navigation.navigate('Guia')}
+               style={{
+                backgroundColor: '#07092c',
+                padding: 8,
+                width: 100,
+                borderRadius: 7,
+              }}>
+                <Text style={{
+                  color: '#fff',
+                  textAlign: 'center',
+                  fontSize: 14,
+                }}>
+
+                  Ver
+                </Text>
+              </TouchableOpacity>
+            </Text>
+
+            <Image
+              source={Guia}
+              style={{ width: 110, height: 110 }}
+            />
+          </View>
+
+        </View>
+
+        <Text
+          style={{
+            fontSize: 18,
+            color: "#000",
+            padding: 14,
+            marginHorizontal: 20,
+            fontWeight: 'bold',
+          }}
+        >
+          Clasificaciones
           
-      </ScrollView>
+        </Text>
+        
+        <View style={styles.listemvipbase}>
+        
+        
+          <View style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}>
+            <Text
+              style={{
+                color: '#000',
+                fontWeight: 'bold',
+                fontSize: 12,
+                textAlign: 'center',
+                backgroundColor:'#fff',
+                padding:10,
+                borderRadius:10,
+                paddingHorizontal:25
+                
+              }}>
+              Agente externo{'\n'}
+              <Image
+                source={Monedas}
+                style={{ width: 40, height: 40 }}
+              />{'\n'}{'\n'}
+               <Text style={{
+                  color: '#000',
+                  textAlign: 'center',
+                  fontSize: 10,
+                }}>
+                  5% Diario{'\n'}
+                </Text>
+              <TouchableOpacity onPress={() =>navigation.navigate('Agentes')}
+              style={{
+                backgroundColor: '#fd8029',
+                padding: 7,
+                width: 100,
+                borderRadius: 7,
+              }}>
+                <Text style={{
+                  color: '#fff',
+                  textAlign: 'center',
+                  fontSize: 12,
+                }}>
+                  Unirme
+                </Text>
+              </TouchableOpacity>
+            </Text>
+            <Text
+              style={{
+                color: '#000',
+                fontWeight: 'bold',
+                fontSize: 12,
+                textAlign: 'center',
+                backgroundColor:'#fff',
+                padding:10,
+                borderRadius:10,
+                paddingHorizontal:25
+              
+              }}>
+              Agente interno{'\n'}
+              <Image
+                source={Monedas}
+                style={{ width: 40, height: 40 }}
+              />{'\n'}{'\n'}
+               <Text style={{
+                  color: '#000',
+                  textAlign: 'center',
+                  fontSize: 10,
+                }}>
+                  10% Diario{'\n'}
+                </Text>
+              <TouchableOpacity onPress={() =>navigation.navigate('Agentes')}
+              style={{
+                backgroundColor: '#fd8029',
+                padding: 7,
+                width: 100,
+                borderRadius: 7,
+              }}>
+                
+                <Text style={{
+                  color: '#fff',
+                  textAlign: 'center',
+                  fontSize: 12,
+                }}>
+                  Unirme
+                </Text>
+              </TouchableOpacity>
+            </Text>
+          </View>
+
+          
+          <View style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}>
+            <Text
+              style={{
+                color: '#000',
+                fontWeight: 'bold',
+                fontSize: 12,
+                textAlign: 'center',
+                backgroundColor:'#fff',
+                padding:10,
+                borderRadius:10,
+                paddingHorizontal:25,
+                marginTop:20
+              }}>
+              Agente VIP{'\n'}
+              <Image
+                source={Monedas}
+                style={{ width: 40, height: 40 }}
+              />{'\n'}{'\n'}
+               <Text style={{
+                  color: '#000',
+                  textAlign: 'center',
+                  fontSize: 10,
+                }}>
+                  15% Diario{'\n'}
+                </Text>
+              <TouchableOpacity onPress={() =>navigation.navigate('Agentes')}
+               style={{
+                backgroundColor: '#fd8029',
+                padding: 7,
+                width: 100,
+                borderRadius: 7,
+              }}>
+                <Text style={{
+                  color: '#fff',
+                  textAlign: 'center',
+                  fontSize: 12,
+                }}>
+                  Unirme
+                </Text>
+              </TouchableOpacity>
+            </Text>
+            <Text
+              style={{
+                color: '#000',
+                fontWeight: 'bold',
+                fontSize: 12,
+                textAlign: 'center',
+                backgroundColor:'#fff',
+                padding:10,
+                borderRadius:10,
+                paddingHorizontal:25,
+                marginTop:20
+              }}>
+              Agente Superior{'\n'}
+              <Image
+                source={Monedas}
+                style={{ width: 40, height: 40 }}
+              />{'\n'}{'\n'}
+               <Text style={{
+                  color: '#000',
+                  textAlign: 'center',
+                  fontSize: 10,
+                }}>
+                  20% Diario{'\n'}
+                </Text>
+              <TouchableOpacity onPress={() =>navigation.navigate('Agentes')}
+              style={{
+                backgroundColor: '#fd8029',
+                padding: 7,
+                width: 100,
+                borderRadius: 7,
+              }}>
+                
+                <Text style={{
+                  color: '#fff',
+                  textAlign: 'center',
+                  fontSize: 12,
+                }}>
+                  Unirme
+                </Text>
+              </TouchableOpacity>
+            </Text>
+          </View>
+
+        </View>
+
+      
     </View>
+    </ScrollView>
   );
 };
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     justifyContent: "center",
-    backgroundColor: "#fff",
+    marginTop:41,
   },
-  background: {
-    position: "absolute",
-    left: 0,
-    right: 0,
-    top: 0,
-    height: 500,
-  },
-  centeredView: {
-    flex: 1,
+  container2: {
+    marginTop:-4,
     justifyContent: "center",
-    alignItems: "center",
+    backgroundColor: '#07092c',
+    paddingBottom:7
   },
-  modalView: {
-    margin: 20,
-    backgroundColor: "white",
-    borderRadius: 10,
-    padding: 35,
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
+  listem: {
+    marginTop: 20,
+    marginBottom: 10,
+    marginHorizontal: 25,
+    backgroundColor: '#16c25e',
+    padding: 20,
+    borderRadius: 15,
   },
-  button: {
-    borderRadius: 10,
-    padding: 10,
-    elevation: 2,
-    margin:5,
+  listemvipbase: {
+    marginTop: 10,
+    marginBottom: 10,
+    marginHorizontal: 25,
+    backgroundColor: '#fef1ea',
+    padding: 20,
+    borderRadius: 15,
   },
-  
-  buttonOpen: {
-    backgroundColor: "#F194FF",
+  listemguia: {
+    marginTop: 10,
+    marginBottom: 10,
+    marginHorizontal: 25,
+    backgroundColor: '#fff',
+    padding: 20,
+    borderRadius: 15,
   },
-  buttonClose: {
-    backgroundColor: "#000",
+  botones: {
+    marginTop: 10,
+    marginBottom: 20,
+    marginHorizontal: 25,
+    backgroundColor: '#176793',
+    alignItems: 'center',
+    borderRadius: 15,
   },
-  buttonfiltrar: {
-    backgroundColor: "orange",
-  },
-  textStyle: {
-    color: "white",
-    fontWeight: "bold",
-    textAlign: "center",
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: "center",
-    fontSize: 15,
-    fontWeight:'bold'
+  listemvip: {
+    marginTop: 20,
+    marginBottom: 10,
+    marginHorizontal: 25,
+    backgroundColor: '#000',
+   
+    borderRadius: 15,
   },
 });
 
-export default Home;
+export default Homeapp;

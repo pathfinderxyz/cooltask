@@ -32,21 +32,10 @@ const Registrar = ({ navigation }) => {
   const [pass, setPass] = useState(null);
   const rol = "cliente";
 
-  const data = [
-    { key: "Argentina", value: "Argentina" },
-    { key: "Chile", value: "Chile" },
-    { key: "Colombia", value: "Colombia" },
-    { key: "Mexico", value: "Mexico" },
-    { key: "Paraguay", value: "Paraguay" },
-    { key: "Peru", value: "Peru" },
-    { key: "Uruguay", value: "Uruguay" },
-    { key: "Venezuela", value: "Venezuela" }
-  ];
-
   const [Error, setError] = useState(false);
 
   const validardatos = () => {
-    if (nombre == null || correo == null || selected == null || pass == null ) {
+    if (nombre == null || correo == null || pass == null ) {
       setError(true);
     } else {
       RegistrarCliente();
@@ -82,7 +71,7 @@ const Registrar = ({ navigation }) => {
           marginBottom: 30,
         }}
       >
-        Cliente
+        Nuevo usuario
       </Text>
       {Error && (
         <Text
@@ -142,38 +131,7 @@ const Registrar = ({ navigation }) => {
         value={correo}
         onChangeText={(text) => setCorreo(text)}
       />
-      <Text
-        style={{
-          fontSize: 14,
-          fontWeight: "400",
-          color: "#fff",
-          marginBottom: 5,
-        }}
-      >
-        País
-      </Text>
-
-      <SelectList
-        setSelected={setSelected}
-        data={data}
-        searchPlaceholder="Seleccione"
-        arrowicon={<Ionicons name="chevron-down" size={20} color={"#fff"} />}
-        searchicon={
-          <Ionicons name="ios-lock-closed-outline" size={20} color={"#fff"} />
-        }
-        search={false}
-        boxStyles={{
-          borderRadius: 0,
-          borderTop: 0,
-          borderLeft: 0,
-          borderRight: 0,
-          borderColor: "#fff",
-          marginBottom: 15,
-        }} //override default styles
-        inputStyles={{ color: "#fff" }}
-        dropdownTextStyles={{ color: "#fff" }}
-        defaultOption={{ key: "0", value: "Seleccione un pais" }} //default selected option
-      />
+    
 
       <Text
         style={{

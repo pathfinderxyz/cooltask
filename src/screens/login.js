@@ -42,7 +42,7 @@ const Login = ({navigation})  => {
       <LinearGradient
         // Background Linear Gradient
       
-        colors={['#0a1d60', 'transparent']}
+        colors={['#1c1b3c', 'transparent']}
         style={styles.background}
       />
         <Text
@@ -140,7 +140,7 @@ const Login = ({navigation})  => {
           style={{
             color: '#fff'
           }}>¿Eres Nuevo?</Text>
-          <TouchableOpacity onPress={() => navigation.navigate('SeleccionarRegistro')}>
+          <TouchableOpacity onPress={() => navigation.navigate('Registrar')}>
             <Text style={{color: 'orange', fontWeight: '700'}}> Registrate</Text>
           </TouchableOpacity>
         </View>

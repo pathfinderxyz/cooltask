@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View,StatusBar,Image } from 'react-native';
-import Favicon from './../assets/img/log.png';
+import Favicon from './../assets/logo/cool.png';
 /* import {Colors} from '../../src/constants' */
 
 

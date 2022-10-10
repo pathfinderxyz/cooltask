@@ -18,6 +18,10 @@ import MyDrawer from "./drawer";
 import Cuenta from "../screens/cuenta";
 import { AuthContext } from '../context/AuthContext';
 import AnunciosContratados from "../screens/anuncioscontratados";
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Tareas from "./../screens/cooltask/tareas";
+import Referidos from "./../screens/cooltask/referidos";
+import Micuenta from "./../screens/cooltask/micuenta";
 
 const Tab = createBottomTabNavigator();
 
@@ -32,28 +36,44 @@ function Tabs() {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarShowLabel: false,
         tabBarStyle: {
           backgroundColor: "#07092d",
           borderTopColor: "#07092c",
-          paddingBottom: 10,
+          paddingTop: 5,
+          paddingBottom: 5,
+          height: 60
         },
         tabBarInactiveTintColor: "#fff",
         tabBarActiveTintColor: "#fff",
       }}
-    >
+      >
       <Tab.Screen
         name="Home"
         component={Home}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="home" color={color} size={24} />
+            <MaterialIcons name="home-filled" color={color} size={24} />
           ),
         }}
       />
       <Tab.Screen
-        name="Buscar"
-        component={Movies}
+        name="Tareas"
+        component={Tareas}
+        options={{
+          title: 'Bonos Diarios',
+          headerStyle: {
+            backgroundColor: '#0a1d60',
+          },
+          headerTintColor: '#fff',
+          headerShown: true,
+          tabBarIcon: ({ color, size }) => (
+            <MaterialIcons name="add-task" color={color} size={24} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Referidos"
+        component={Referidos}
         options={{
           headerStyle: {
             backgroundColor: '#0a1d60',
@@ -61,44 +81,14 @@ function Tabs() {
           headerTintColor: '#fff',
           headerShown: true,
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="search" color={color} size={24} />
+            <MaterialIcons name="account-tree" color={color} size={24} />
           ),
         }}
       />
-       {userInfo[0].rol == 'cliente' ?
-      <Tab.Screen
-        name="Mis Anuncios Activos"
-        component={Config}
-        options={{
-          headerStyle: {
-            backgroundColor: '#0a1d60',
-          },
-          headerTintColor: '#fff',
-          headerShown: true,
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="albums" color={color} size={24} />
-          ),
-        }}
-      />
-      :
-      <Tab.Screen
-      name="Anuncios Contratados"
-      component={AnunciosContratados}
-      options={{
-        headerStyle: {
-          backgroundColor: '#0a1d60',
-        },
-        headerTintColor: '#fff',
-        headerShown: true,
-        tabBarIcon: ({ color, size }) => (
-          <Ionicons name="checkmark-done-circle" color={color} size={24} />
-        ),
-      }}
-    />
-    }
+   
       <Tab.Screen
         name="Cuenta"
-        component={Cuenta}
+        component={Micuenta}
         options={{
           headerStyle: {
             backgroundColor: '#0a1d60',
