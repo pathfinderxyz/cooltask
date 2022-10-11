@@ -131,7 +131,29 @@ const Registrar = ({ navigation }) => {
         value={correo}
         onChangeText={(text) => setCorreo(text)}
       />
-    
+        <Text
+        style={{
+          fontSize: 14,
+          fontWeight: "400",
+          color: "#fff",
+          marginBottom: 5,
+        }}
+      >
+        Codigo de invitacion
+      </Text>
+
+      <InputField
+        icon={
+          <Ionicons
+            name="md-qr-code"
+            size={20}
+            color="#fff"
+            style={{ marginRight: 5 }}
+          />
+        }
+        value={nombre}
+        onChangeText={(text) => setNombre(text)}
+      />
 
       <Text
         style={{

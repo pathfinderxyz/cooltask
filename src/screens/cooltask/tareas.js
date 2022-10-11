@@ -14,20 +14,12 @@ const Tareas = ({ navigation }) => {
         color: '#000',
         marginLeft: 14,
         marginRight: 14,
+        marginBottom: 10,
   
       }}>
         Las tareas se activaran cada 24 horas!
       </Text>
 
-      <Text style={{
-        fontSize: 16,
-        color: '#000',
-        marginLeft: 14,
-        marginRight: 14,
-        marginTop: 20
-      }}>
-
-      </Text>
       
       <View style={styles.listem}>
         <View style={{

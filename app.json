@@ -29,7 +29,7 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "description": "Aplicacion de logistick",
-    "githubUrl": "https://github.com/pathfinderxyz/Applogistick.git"
+    "description": "Aplicacion CoolTask",
+    "githubUrl": "https://github.com/pathfinderxyz/cooltask.git"
   }
 }

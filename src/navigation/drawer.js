@@ -19,6 +19,10 @@ import Deposito from '../screens/cooltask/deposito';
 import Guia from '../screens/cooltask/guia';
 import Agentes from '../screens/cooltask/agentesexterno';
 import { AuthContext } from '../context/AuthContext';
+import Wallet from '../screens/cooltask/MiCuenta/wallet';
+import Descargarapp from '../screens/cooltask/MiCuenta/descargarapp';
+import Mipass from '../screens/cooltask/MiCuenta/mipass';
+import SoporteApp from '../screens/cooltask/MiCuenta/soporte';
 
 
 const Drawer = createDrawerNavigator();
@@ -111,7 +115,43 @@ export default function MyDrawer() {
 
         options={{
           headerShown: true,
-          title: 'Agentes',
+          title: 'Agente Externo',
+          headerStyle: { backgroundColor: '#0a1d60', },
+          headerTintColor: '#fff',
+        }}
+      />
+       <Stack.Screen name="Miwallet" component={Wallet}
+
+        options={{
+          headerShown: true,
+          title: 'Wallet',
+          headerStyle: { backgroundColor: '#0a1d60', },
+          headerTintColor: '#fff',
+        }}
+      />
+       <Stack.Screen name="Descargarapp" component={Descargarapp}
+
+        options={{
+          headerShown: true,
+          title: 'Descargar app',
+          headerStyle: { backgroundColor: '#0a1d60', },
+          headerTintColor: '#fff',
+        }}
+      />
+       <Stack.Screen name="Mipass" component={Mipass}
+
+        options={{
+          headerShown: true,
+          title: 'Mi contraseña',
+          headerStyle: { backgroundColor: '#0a1d60', },
+          headerTintColor: '#fff',
+        }}
+      />
+       <Stack.Screen name="Soporteapp" component={SoporteApp}
+
+        options={{
+          headerShown: true,
+          title: 'Soporte',
           headerStyle: { backgroundColor: '#0a1d60', },
           headerTintColor: '#fff',
         }}

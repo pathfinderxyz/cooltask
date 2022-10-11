@@ -193,7 +193,7 @@ const Homeapp = ({ navigation }) => {
                   marginTop: 4,
                   color: '#fff',
                 }}>
-                Compartir
+                Invitar
               </Text>
             </View>
             <View
@@ -335,7 +335,7 @@ const Homeapp = ({ navigation }) => {
             fontWeight: 'bold',
           }}
         >
-          Clasificaciones
+          Calificaciones
           
         </Text>
         

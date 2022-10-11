@@ -15,7 +15,7 @@ function App() {
 
 
     <AuthProvider>
-      <StatusBar style="Dark" />
+      <StatusBar style="Light" />
       <AppNav />
     </AuthProvider>
 

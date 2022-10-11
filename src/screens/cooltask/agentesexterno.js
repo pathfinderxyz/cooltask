@@ -1,37 +1,195 @@
-import * as React from 'react';
-import { View, Text,Button,TouchableOpacity } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { useState, useContext, useEffect } from "react";
+import {
+  Alert,
+  Modal,
+  View,
+  Text,
+  SafeAreaView,
+  Image,
+  ScrollView,
+  Pressable,
+  ImageBackground,
+  TextInput,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
 
 
 
-const AgenteExterno = ({navigation}) => {
+import axios from "axios";
+import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import { AuthContext } from '../../context/AuthContext';
+import nivel1 from './../../assets/niveles/nivel1.png';
+import nivel2 from './../../assets/niveles/nivel2.png';
+import nivel3 from './../../assets/niveles/nivel3.png';
+import Monedas from './../../assets/botones/monedas.png';
+import Req from './../../assets/botones/icon_req.png';
+import Retirocash from './../../assets/botones/retiro_cash.png';
+
+const AgenteExterno = ({ navigation }) => {
+  
+  const [data, setData] = useState([]);
+  
+  const [cargando, setCargando] = useState(true);
+
+  const { userInfo } = useContext(AuthContext);
+
+  console.log(data);
+
   return (
-    <View style={{marginHorizontal:10,marginTop: 20}}>
-
-       <Text style={{
-            fontSize: 15,
-            color:'#000',
-            marginLeft:14,
-            marginRight:14,
-            marginBottom:15,
-            }}>
-          Para mas informacion puede comunicarse a nuestro Telegram.
-      </Text>
+    <ScrollView>
+    <View style={styles.container}>
       
-      <Text style={{
-            fontSize: 16,
-            color:'#000',
-            marginLeft:14,
-            marginRight:14,
-            marginBottom:15,
-            marginTop:20
+    <View style={styles.listemguia}>
+    <Text
+            style={{
+              color: '#000',
+              fontSize: 14,
+              fontWeight: 'bold',
+              marginBottom: 10,
             }}>
-           Telegram: CoolTask
+            Requisitos
           </Text>
-     
+       
+          <View style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}>
+            
+            <Text
+              style={{
+                color: '#2c2c2c',
+                fontSize: 12,
+              
+              }}>
+              Solo con registrarte seras un {'\n'}
+              agente interno.         
+            </Text>
+            <Image
+                source={Req}
+                style={{ width: 70, height: 70, marginTop:-32 }}
+              />
+
+          </View>
+
+       </View>
+
+       <View style={styles.listemguia}>
+    <Text
+            style={{
+              color: '#000',
+              fontSize: 14,
+              fontWeight: 'bold',
+              marginBottom: 10,
+            }}>
+            Ganancias
+          </Text>
+       
+          <View style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}>
+            
+            <Text
+              style={{
+                color: '#2c2c2c',
+                fontSize: 12,
+               
+              
+              }}>
+              3 bonos diarios.            
+            </Text>
+            <Image
+                source={Monedas}
+                style={{ width: 70, height: 70, marginTop:-32 }}
+              />
+
+          </View>
+
+       </View>
+
+       <View style={styles.listemguia}>
+    <Text
+            style={{
+              color: '#000',
+              fontSize: 14,
+              fontWeight: 'bold',
+              marginBottom: 10,
+            }}>
+            Retiros
+          </Text>
+       
+          <View style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}>
+            
+            <Text
+              style={{
+                color: '#2c2c2c',
+                fontSize: 12,
+              
+              }}>
+              No puede retirar.           
+            </Text>
+            <Image
+                source={Retirocash}
+                style={{ width: 70, height: 70, marginTop:-32 }}
+              />
+
+          </View>
+         
+
+       </View>
+       <View style={styles.listemboton}>
+       <TouchableOpacity
+        style={{
+          padding: 10,
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+        }}
+        >
+        <Text
+          style={{
+            color: '#fff',
+            fontSize: 14,
+            textAlign: 'center',
+            fontWeight: 'bold'
+          }}>
+          Subir de nivel
+        </Text>
+        
+
+        <MaterialIcons name="arrow-forward-ios" size={18} color="#fff" />
+      </TouchableOpacity>
+      </View>
+    
     </View>
+    </ScrollView>
   );
-}
-export default AgenteExterno;
+};
+const styles = StyleSheet.create({
+  container: {
+    justifyContent: "center",
+    marginTop:11,
+  },
+  listemguia: {
+    marginTop: 10,
+    marginBottom: 10,
+    marginHorizontal: 25,
+    backgroundColor: '#fff',
+    padding: 20,
+    borderRadius: 15,
+  },
+  listemboton: {
+    marginTop: 10,
+    marginBottom: 10,
+    marginHorizontal: 25,
+    backgroundColor: '#fd8029',
+    padding: 10,
+    borderRadius: 15,
+  }
+});
+
+export default AgenteExterno ;
