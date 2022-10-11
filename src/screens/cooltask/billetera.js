@@ -3,7 +3,7 @@ import { View, Text, Button, TouchableOpacity, Image, StyleSheet } from 'react-n
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import Monedas from './../../assets/botones/monedas.png';
+import usdtimg from './../../assets/botones/usdt.png';
 
 const Billetera = ({ navigation }) => {
   return (
@@ -33,17 +33,21 @@ const Billetera = ({ navigation }) => {
           Acumulado
             
           </Text>
-          
+           
           </View>
-
+             <Image
+                source={usdtimg}
+                style={{ width: 60, height: 60,marginBottom:15}}
+              />
+             
             <Text
               style={{
-                color: '#ed8900',
+                color: '#07092c',
                 fontWeight: '800',
                 fontSize: 31,
-                marginBottom: 30,
+                marginBottom: 20,
               }}>
-              $122.00 USD
+              $122.00 USDT
             </Text>
             <TouchableOpacity
             style={{
@@ -74,7 +78,7 @@ const Billetera = ({ navigation }) => {
         El minimo de retiro para los fondos es de 10$.
       </Text>
         </View>
-
+       
         <Text
           style={{
             fontSize: 17,
@@ -87,7 +91,17 @@ const Billetera = ({ navigation }) => {
           Historial de operaciones
           
         </Text>
-
+        <View style={styles.listemhistorial}>
+        <Text
+          style={{
+            fontSize: 14,
+            color: "#000",
+          }}
+        >
+          Aun no has realizado ningun movimiento!
+          
+        </Text>
+      </View>
     </View>
   );
 }
@@ -101,6 +115,14 @@ const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 15,
     alignItems:'center'
+  },
+  listemhistorial: {
+
+    marginBottom: 10,
+    marginHorizontal: 15,
+    backgroundColor: '#fff',
+    padding: 20,
+    borderRadius: 15,
   },
 });
 export default Billetera;
