@@ -130,7 +130,7 @@ const Retiro =  ({navigation})=> {
             marginTop: 10,
           }}
         >
-          Wallet registrada
+          Wallet USDT TRC20
         </Text>
         <View style={{
             flexDirection: "row",
@@ -138,18 +138,18 @@ const Retiro =  ({navigation})=> {
           }}>
             <Image
                 source={usdtimg}
-                style={{ width: 60, height: 60,marginBottom:15}}
+                style={{ width: 20, height: 20}}
               /> 
         <Text
           style={{
             fontSize: 11,
             fontWeight: "400",
-            color: "green",
+            color: "#000",
             marginBottom: 5,
             fontWeight: "500",
           }}
         >
-         Disponible: 120 usdt
+         0x3bE018a933B7d920a5d553DF3473c52b17bfB3A0
         </Text>
         </View>
 
