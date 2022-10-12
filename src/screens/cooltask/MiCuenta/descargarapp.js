@@ -3,7 +3,6 @@ import { View, Text, Button, TouchableOpacity, Image, StyleSheet } from 'react-n
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import Monedas from './../../assets/botones/monedas.png';
 
 const Descargarapp = ({ navigation }) => {
   return (
