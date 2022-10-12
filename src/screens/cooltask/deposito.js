@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text, Button, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { View, Text, Button, TouchableOpacity, Image, StyleSheet,ScrollView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -7,6 +7,7 @@ import walletimg from './../../assets/botones/walletusdt.png';
 
 const Deposito = ({ navigation }) => {
   return (
+    <ScrollView>
     <View style={{ marginHorizontal: 10}}>
 
      
@@ -30,24 +31,51 @@ const Deposito = ({ navigation }) => {
               textTransform: 'uppercase',
               marginBottom: 10,
             }}>
-          USDT TRC20
+          Deposito USDT 
             
           </Text>
            
           </View>
              <Image
                 source={walletimg}
-                style={{ width: 250, height: 250,marginBottom:15}}
+                style={{ width: 250, height: 250,marginBottom:15,marginLeft:31}}
               />
-             
+                <Text
+              style={{
+                color: '#07092c',
+                fontSize: 10,
+                marginBottom: 8
+              }}>
+                Direccion de la Billetera
+
+            </Text>
             <Text
               style={{
                 color: '#07092c',
                 fontWeight: '800',
-                fontSize: 10,
+                fontSize: 13,
                 marginBottom: 20,
               }}>
                 0x3bE018a933B7d920a5d553DF3473c52b17bfB3A0
+
+            </Text>
+            <Text
+              style={{
+                color: '#07092c',
+                fontSize: 10,
+                marginBottom: 8
+              }}>
+                Red
+
+            </Text>
+            <Text
+              style={{
+                color: '#07092c',
+                fontWeight: '800',
+                fontSize: 13,
+                marginBottom: 20,
+              }}>
+                Tron(TRC20)
 
             </Text>
             <TouchableOpacity
@@ -63,26 +91,46 @@ const Deposito = ({ navigation }) => {
               fontSize: 14,
             }}>
 
-             Realizar Deposito
+             Confirmar Deposito
             </Text>
           </TouchableOpacity>
-        
-          <Text style={{
-        fontSize: 12,
-        color: '#000',
-        marginLeft: 14,
-        marginRight: 14,
-        marginTop: 30,
-        borderColor:'#000'
-  
-      }}>
-        El minimo de retiro para los fondos es de 10$.
-      </Text>
+
+    
         </View>
        
-       
+        <View style={styles.listemhistorial}>
+        <Text
+          style={{
+            fontSize: 15,
+            fontWeight: "500",
+            color: "#000",
+            marginBottom: 30,
+            marginTop: 10,
+          }}
+        >
+          Instrucciones para depositar:
+        </Text>
+
+
+        <Text
+          style={{
+            fontSize: 11,
+            color: "#000",
+          }}
+        >
+          * La cantidad minima de deposito es de 20 usdt.{'\n'}{'\n'}
+          * Una vez realizado el deposito presione "Confirmar deposito" e Introduzca
+          los datos de la transaccion, nuestro equipo de trabajo procedera a verificarlo.{'\n'}{'\n'}
+          * Puede que nuestro equipo de soporte solicite 
+          informacion adicional como capture de pantallas.{'\n'}{'\n'}
+          *Los depositos pueden tardar hasta 24 horas en verificarse.
+        </Text>
+
+
+        </View>
     
     </View>
+    </ScrollView>
   );
 }
 
@@ -94,7 +142,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     padding: 20,
     borderRadius: 15,
-    alignItems:'center'
+    
   },
   listemhistorial: {
 

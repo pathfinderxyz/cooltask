@@ -103,7 +103,33 @@ const Retiro =  ({navigation})=> {
         />
       
 
-        <CustomButton label={"Solicitar Retiro"} onPress={validardatos} />
+      <TouchableOpacity
+            style={{
+              backgroundColor: '#07092c',
+              padding: 12,
+             
+              borderRadius: 7,
+            }}>
+            <Text style={{
+              color: '#fff',
+              textAlign: 'center',
+              fontSize: 14,
+            }}>
+
+            Solicitar retiro
+            </Text>
+          </TouchableOpacity>
+        <Text
+          style={{
+            fontSize: 15,
+            fontWeight: "500",
+            color: "#000",
+            marginBottom: 20,
+            marginTop: 30,
+          }}
+        >
+          Instrucciones para retirar:
+        </Text>
 
         <Text
           style={{
@@ -127,10 +153,9 @@ const Retiro =  ({navigation})=> {
             fontWeight: "500",
             color: "#000",
             marginBottom: 30,
-            marginTop: 10,
           }}
         >
-          Wallet USDT TRC20
+          Wallet Vinculada
         </Text>
         <View style={{
             flexDirection: "row",

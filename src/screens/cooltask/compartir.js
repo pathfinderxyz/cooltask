@@ -58,7 +58,7 @@ const Compartir = ({ navigation }) => {
               fontSize: 14,
             }}>
 
-              Copiar
+              Copiar Link
             </Text>
           </TouchableOpacity>
           
