@@ -1,37 +1,136 @@
-import * as React from 'react';
-import { View, Text,Button,TouchableOpacity } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import React, { useContext, useState } from "react";
+import {
+  SafeAreaView,
+  ScrollView,
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
+
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+import InputField from "./../../../componentes/InputFliedClaro";
+import CustomButton from "./../../../componentes/CustomButton";
+
+import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import Ionicons from "react-native-vector-icons/Ionicons";
+import { LinearGradient } from "expo-linear-gradient";
+import SelectList from "react-native-dropdown-select-list";
+import axios from "axios";
+import { AuthContext } from "./../../../context/AuthContext";
+
+const url = "https://api.cooltask.homes/public/anuncios";
+
+const Mipass= ({ navigation, route }) => {
+ 
+  const [titulo, setTitulo] = useState(route.params?.title);
+  const [descripcion, setDescripcion] = useState(route.params?.descripcion);
+  const [precio, setPrecio] = useState(route.params?.precio);
+  const idanuncio = route.params?.id;
+
+  const { userInfo } = useContext(AuthContext);
+
+  const [Error, setError] = useState(false);
+
+  const EditarAnuncio = () => {
+    console.log(idanuncio);
+    console.log(url + "/" + idanuncio);
+    axios
+      .put(url + "/" + idanuncio, {titulo,descripcion,precio})
+      .then((res) => {
+        console.log(res.data);
+        navigation.navigate("RegistroExitoso");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
 
-
-const Mipass= ({navigation}) => {
   return (
-    <View style={{marginHorizontal:10,marginTop: 20}}>
-
-       <Text style={{
-            fontSize: 15,
-            color:'#000',
-            marginLeft:14,
-            marginRight:14,
-            marginBottom:15,
-            }}>
-          Para mas informacion puede comunicarse a nuestro Telegram.
-      </Text>
-      
-      <Text style={{
-            fontSize: 16,
-            color:'#000',
-            marginLeft:14,
-            marginRight:14,
-            marginBottom:15,
-            marginTop:20
-            }}>
-           Telegram: CoolTask
+    <ScrollView>
+      <View showsVerticalScrollIndicator={false} style={styles.container}>
+        <Text
+          style={{
+            fontSize: 14,
+            color: "#000",
+            marginBottom: 30,
+            marginTop: 30,
+          }}
+        >
+         Puede modificar su contraseña y luego presione Actualizar contraseña.
+        </Text>
+        {Error && (
+          <Text
+            style={{
+              fontSize: 15,
+              fontWeight: "500",
+              color: "#000",
+              marginBottom: 30,
+            }}
+          >
+            ¡Error, por favor rellene todos los campos!
           </Text>
+        )}
+        <Text
+          style={{
+            fontSize: 12,
+            fontWeight: "400",
+            color: "#000",
+            marginBottom: 5,
+          }}
+        >
+         Contraseña registrada
+        </Text>
+        <TextInput style={styles.InputE}
+          defaultValue={userInfo[0].password}
+          onChangeText={(text) => setTitulo(text)}
+        />
+
      
-    </View>
+        <CustomButton label={"Actualizar contraseña"} onPress={EditarAnuncio} />
+
+
+    
+      </View>
+     
+    </ScrollView>
   );
-}
+};
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    paddingHorizontal: 25,
+  },
+  background: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: 0,
+    height: 500,
+  },
+  InputE:{
+    flexDirection: "row",
+    borderColor: "#ccc",
+    borderWidth: 1,
+    paddingBottom: 10,
+    marginBottom: 25,
+    borderRadius: 5,
+    flex: 1, 
+    paddingVertical:4,
+    fontSize:15,
+    paddingHorizontal:10,
+    paddingTop:10
+  },
+  botoneliminar: {
+    backgroundColor:'000'
+  },
+});
+
+
+
 export default Mipass;

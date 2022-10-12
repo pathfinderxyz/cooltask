@@ -36,8 +36,8 @@ import { AuthContext } from '../context/AuthContext';
 /* const NavigatetoDetails = props => {
   props.navigation.navigate('GameDetails');
 } */
-const url = "https://apilogistick.iawork.tk/public/anuncios";
-const urlfiltro = "https://apilogistick.iawork.tk/public/anunciosfiltro";
+const url = "https://api.cooltask.homes/public/anuncios";
+const urlfiltro = "https://api.cooltask.homes/public/anunciosfiltro";
 
 const datacategoria = [
   { key: "todos", value: "todos" },
@@ -185,7 +185,7 @@ const Homeapp = ({ navigation }) => {
               <TouchableOpacity onPress={() =>navigation.navigate('Compartir')}>
               <Image
                 source={Compartir}
-                style={{ width: 50, height: 50 }}
+                style={{ width: 51, height: 51 }}
               />
               </TouchableOpacity>
               <Text

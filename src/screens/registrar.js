@@ -22,15 +22,15 @@ import { LinearGradient } from "expo-linear-gradient";
 import SelectList from "react-native-dropdown-select-list";
 import axios from "axios";
 
-const url = "https://apilogistick.iawork.tk/public/usuarios";
+const url = "https://api.cooltask.homes/public/usuarios";
 
 const Registrar = ({ navigation }) => {
-  const [selected, setSelected] = React.useState("");
+
   const [nombre, setNombre] = useState(null);
   const [correo, setCorreo] = useState(null);
-  const [pais, setPais] = useState(null);
+  const [codigo, setCodigo] = useState(null);
   const [pass, setPass] = useState(null);
-  const rol = "cliente";
+  
 
   const [Error, setError] = useState(false);
 
@@ -44,7 +44,7 @@ const Registrar = ({ navigation }) => {
 
   const RegistrarCliente = () => {
     axios
-      .post(url, { nombre, correo, selected, pass, rol })
+      .post(url, { nombre, correo,codigo, pass, })
       .then((res) => {
         console.log(res.data);
         navigation.navigate("GraciasRegistrar");
@@ -55,20 +55,21 @@ const Registrar = ({ navigation }) => {
   };
 
   return (
-    <View showsVerticalScrollIndicator={false} style={styles.container}>
+    <View  style={styles.container}>
       <LinearGradient
         // Background Linear Gradient
 
         colors={["#0a1d60", "transparent"]}
         style={styles.background}
       />
-
+<ScrollView>
       <Text
         style={{
           fontSize: 28,
           fontWeight: "600",
           color: "#fff",
           marginBottom: 30,
+          marginTop:100
         }}
       >
         Nuevo usuario
@@ -93,7 +94,7 @@ const Registrar = ({ navigation }) => {
           marginBottom: 5,
         }}
       >
-        Nombre completo
+        Nombre de Usuario
       </Text>
 
       <InputField
@@ -151,8 +152,8 @@ const Registrar = ({ navigation }) => {
             style={{ marginRight: 5 }}
           />
         }
-        value={nombre}
-        onChangeText={(text) => setNombre(text)}
+        value={codigo}
+        onChangeText={(text) => setCodigo(text)}
       />
 
       <Text
@@ -219,6 +220,7 @@ const Registrar = ({ navigation }) => {
           <Text style={{ color: "orange", fontWeight: "700" }}> Login</Text>
         </TouchableOpacity>
       </View>
+      </ScrollView>
     </View>
   );
 };
@@ -228,6 +230,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "#07092c",
     paddingHorizontal: 25,
+    
   },
   background: {
     position: "absolute",

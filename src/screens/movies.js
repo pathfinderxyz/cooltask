@@ -9,7 +9,7 @@ import axios from 'axios';
 import { AuthContext } from './../context/AuthContext';
 import { ScrollView } from 'react-native-gesture-handler';
 
-const url = "https://apilogistick.iawork.tk/public/anuncios";
+const url = "https://api.cooltask.homes/public/anuncios";
 
 const Movies = ({navigation, route}) => {
   const { userInfo } = useContext(AuthContext);

@@ -1,11 +1,15 @@
-import * as React from 'react';
+import { useState, useContext, useEffect } from "react";
 import { View, Text, Button, TouchableOpacity, Image, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Monedas from './../../assets/botones/monedas.png';
+import { AuthContext } from '../../context/AuthContext';
 
 const Compartir = ({ navigation }) => {
+
+  const { userInfo } = useContext(AuthContext);
+
   return (
     <View style={{ marginHorizontal: 10}}>
 
@@ -43,7 +47,7 @@ const Compartir = ({ navigation }) => {
                 fontSize: 31,
                 marginBottom: 30,
               }}>
-              QWEERT
+             {userInfo[0].micodigoinv}
             </Text>
             <TouchableOpacity
             style={{

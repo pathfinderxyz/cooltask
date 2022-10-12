@@ -60,7 +60,7 @@ function Tabs() {
         name="Tareas"
         component={Tareas}
         options={{
-          title: 'Bonos Diarios',
+          title: 'Tareas Diarias',
           headerStyle: {
             backgroundColor: '#0a1d60',
           },
@@ -75,6 +75,7 @@ function Tabs() {
         name="Referidos"
         component={Referidos}
         options={{
+          title: 'Mi equipo',
           headerStyle: {
             backgroundColor: '#0a1d60',
           },

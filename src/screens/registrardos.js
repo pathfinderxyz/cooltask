@@ -23,7 +23,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import SelectList from "react-native-dropdown-select-list";
 import axios from 'axios';
 
-const url = "https://apilogistick.iawork.tk/public/usuarios";
+const url = "https://api.cooltask.homes/public/usuarios";
 
 const RegistrarDos = ({navigation}) => {
   const [selected, setSelected] = React.useState("");

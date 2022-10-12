@@ -38,6 +38,7 @@ const Micuenta = ({ navigation }) => {
   const [cargando, setCargando] = useState(true);
 
   const { userInfo } = useContext(AuthContext);
+  const {Logout}= useContext(AuthContext);
 
   console.log(data);
 
@@ -199,7 +200,7 @@ const Micuenta = ({ navigation }) => {
         </Text>
         <MaterialIcons name="arrow-forward-ios" size={14} color="#898484" />
       </TouchableOpacity>
-      <TouchableOpacity
+      <TouchableOpacity onPress={() => {Logout()}}
         style={{
           padding: 10,
           flexDirection: 'row',

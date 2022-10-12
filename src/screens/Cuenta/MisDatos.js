@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { AuthContext } from '../../context/AuthContext';
 
-const url = "https://apilogistick.iawork.tk/public/anuncios";
+const url = "https://api.cooltask.homes/public/anuncios";
 
 const MisDatos= ({navigation}) => {
 

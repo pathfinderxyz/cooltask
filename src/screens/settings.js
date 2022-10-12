@@ -13,7 +13,7 @@ const NavigatetoHome = props => {
     props.navigation.navigate('Home');
 }
 
-const url = "https://apilogistick.iawork.tk/public/anuncios";
+const url = "https://api.cooltask.homes/public/anuncios";
 
 const Config = ({navigation, route}) => {
   const { userInfo } = useContext(AuthContext);

@@ -23,7 +23,7 @@ import SelectList from "react-native-dropdown-select-list";
 import axios from "axios";
 import { AuthContext } from './../context/AuthContext';
 
-const url = "https://apilogistick.iawork.tk/public/anuncios";
+const url = "https://api.cooltask.homes/public/anuncios";
 
 const CrearAnuncio =  ({navigation})=> {
 

@@ -2,7 +2,7 @@ import React, { createContext, useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 
-const url = "https://apilogistick.iawork.tk/public/login";
+const url = "https://api.cooltask.homes/public/login";
 
 export const AuthContext = createContext();
 

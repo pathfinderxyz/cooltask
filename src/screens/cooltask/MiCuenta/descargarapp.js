@@ -1,10 +1,19 @@
 import * as React from 'react';
-import { View, Text, Button, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { View, Text, Button, TouchableOpacity, Image, StyleSheet,Linking } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Ionicons from "react-native-vector-icons/Ionicons";
+import logo from './../../../assets/logo/cool.png';
+
+const url = "https://cooltask.homes";
 
 const Descargarapp = ({ navigation }) => {
+
+  const Abrirapp = () => {
+    Linking.openURL(url) ;
+  };
+
   return (
     <View style={{ marginHorizontal: 10}}>
 
@@ -29,26 +38,20 @@ const Descargarapp = ({ navigation }) => {
               textTransform: 'uppercase',
               marginBottom: 10,
             }}>
-          Codigo de Invitación
+         Descargar
             
           </Text>
           
           </View>
 
-            <Text
-              style={{
-                color: '#ed8900',
-                fontWeight: '800',
-                fontSize: 31,
-                marginBottom: 30,
-              }}>
-              QWEERT
-            </Text>
-            <TouchableOpacity
+          <Image
+                source={logo}
+                style={{ width: 250, height: 250,marginBottom:15,marginLeft:18}}
+              />
+            <TouchableOpacity onPress={Abrirapp}
             style={{
-              backgroundColor: '#07092c',
-              padding: 8,
-              width: 100,
+              backgroundColor: 'green',
+              padding: 10,
               borderRadius: 7,
             }}>
             <Text style={{
@@ -57,7 +60,12 @@ const Descargarapp = ({ navigation }) => {
               fontSize: 14,
             }}>
 
-              Copiar Link
+         <Ionicons
+            name="md-download"
+            size={18}
+            color="#fff"
+            style={{ marginRight: 20 }}
+          /> Descargar APP
             </Text>
           </TouchableOpacity>
           
@@ -70,7 +78,7 @@ const Descargarapp = ({ navigation }) => {
         borderColor:'#000'
   
       }}>
-        Haz que tus amigos se registren usando este codigo y se convertira en tu referido directo.
+        Puedes usar nuestra app en el telefono y en el navegador de tu movil.
       </Text>
         </View>
 
