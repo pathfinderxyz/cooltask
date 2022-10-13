@@ -14,8 +14,6 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-
-
 import axios from "axios";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import Ionicons from "@expo/vector-icons/Ionicons";
@@ -27,7 +25,7 @@ import Monedas from './../../assets/botones/monedas.png';
 import Req from './../../assets/botones/icon_req.png';
 import Retirocash from './../../assets/botones/retiro_cash.png';
 
-const AgenteExterno = ({ navigation }) => {
+const AgenteSuperior = ({ navigation }) => {
   
   const [data, setData] = useState([]);
   
@@ -63,8 +61,11 @@ const AgenteExterno = ({ navigation }) => {
                 fontSize: 12,
               
               }}>
-              Solo con registrarte seras un {'\n'}
-              agente interno.         
+              Está calificación solo se obtiene cuando{'\n'}
+               eres elegido para formar parte del equipo {'\n'}
+               de trabajo de Cooltask. Puedes optar{'\n'}
+               serlo luego de que eres Agente VIP.
+                 
             </Text>
             <Image
                 source={Req}
@@ -98,7 +99,11 @@ const AgenteExterno = ({ navigation }) => {
                
               
               }}>
-              No genera ganancias.           
+              Ganará el 20% diario de su inversión {'\n'}
+              y siempre podrá retirar.   {'\n'}{'\n'}
+              Además ganará el 30% de la inversión {'\n'}
+              de sus referidos cuando tenga {'\n'}
+              más de 10 referidos.        
             </Text>
             <Image
                 source={Monedas}
@@ -131,7 +136,7 @@ const AgenteExterno = ({ navigation }) => {
                 fontSize: 12,
               
               }}>
-              No puede retirar.           
+              Siempre podras retirar.             
             </Text>
             <Image
                 source={Retirocash}
@@ -139,8 +144,10 @@ const AgenteExterno = ({ navigation }) => {
               />
 
           </View>
+         
+
        </View>
-       
+
     
     </View>
     </ScrollView>
@@ -169,4 +176,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default AgenteExterno ;
+export default AgenteSuperior ;

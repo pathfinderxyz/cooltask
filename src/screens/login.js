@@ -1,4 +1,4 @@
-import React,{useContext,useState,useEffect} from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import {
   SafeAreaView,
   View,
@@ -18,134 +18,163 @@ import { AuthContext } from './../context/AuthContext';
   props.navigation.navigate('Home');
 } */
 
-const Login = ({navigation})  => {
+const Login = ({ navigation }) => {
 
-  const [email,setEmail] = useState(null);
-  const [password,setPassword] = useState(null);
-  const {LoginAuth}= useContext(AuthContext);
-  const {errorglobal}= useContext(AuthContext);
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+  const { LoginAuth } = useContext(AuthContext);
+  const { errorglobal } = useContext(AuthContext);
+
+  const [Cargando, setCargando] = useState(false);
 
   const [Error, setError] = useState(false);
 
   const validardatos = () => {
+    
     if (email == null || password == null) {
       setError(true);
     } else {
-      LoginAuth(email,password);
+      setCargando(true);
+      LoginAuth(email, password);
     }
   };
 
+
+  useEffect(() => {
+      setCargando(false);
+  }, [errorglobal]);
+
   
   return (
-    
-      <View style={styles.container}>
+    <View style={styles.container}>
       <LinearGradient
         // Background Linear Gradient
-      
+
         colors={['#1c1b3c', 'transparent']}
         style={styles.background}
       />
-        <Text
-          style={{
-            fontSize: 28,
-            fontWeight: '500',
-            color: '#fff',
-            marginBottom: 30,
-          }}>
-          Iniciar sesion
-        </Text>
-        {Error && (
-        <Text
-          style={{
-            fontSize: 16,
-            fontWeight: "500",
-            color: "#f8e44b",
-            marginBottom: 30,
-          }}
-        >
-          ¡Error, campos vacios!
-        </Text>
-      )}
 
-      {errorglobal && (
-        <Text
-          style={{
-            fontSize: 16,
-            fontWeight: "500",
-            color: "#f8e44b",
-            marginBottom: 30,
-          }}
-        >
-          ¡Error, los datos de usuario son incorrectos!
-        </Text>
-      )}
+      {Cargando == true ?
 
-        <Text
-        style={{
-            fontSize: 14,
-            fontWeight: '400',
-            color: '#fff',
-            marginBottom: 5,
-          }}>
-         Correo electronico
-        </Text>
-        <InputField
-          icon={
-            <MaterialIcons
-            name="alternate-email"
-            size={20}
-            color="#fff"
-            style={{marginRight: 5}}
-          />
-          }
-          keyboardType="email-address"
-          value={email}
-          onChangeText={text => setEmail(text)}
-          
-        />
-         <Text
-        style={{
-            fontSize: 14,
-            fontWeight: '400',
-            color: '#fff',
-            marginBottom: 5,
-          }}>
-          Contraseña
-        </Text>
-        <InputField
-          icon={
-            <Ionicons
-            name="ios-lock-closed-outline"
-            size={20}
-            color="#fff"
-            style={{marginRight: 5}}
-          />
-          }
-          inputType="password"
-          fieldButtonLabel={"Olvidaste?"}
-          fieldButtonFunction={() => {}}
-          value={password}
-          onChangeText={text => setPassword(text)}
-        />
-        
-        <CustomButton label={"Entrar"} onPress={validardatos} />
-
-        <View
+        <View>
+          <Text  
           style={{
-            flexDirection: 'row',
-            justifyContent: 'center',
-            marginBottom: 30,
-          }}>
-          <Text
-          style={{
-            color: '#fff'
-          }}>¿Eres Nuevo?</Text>
-          <TouchableOpacity onPress={() => navigation.navigate('Registrar')}>
-            <Text style={{color: 'orange', fontWeight: '700'}}> Registrate</Text>
-          </TouchableOpacity>
+              color: '#fff',
+              fontSize: 15,
+              fontWeight: 'bold',
+              textTransform: 'uppercase',
+              marginBottom: 10,
+              textAlign:'center'
+            }}>
+            Cargando....
+          </Text>
         </View>
-     
-      </View>
+        :
+        <View>
+          <Text
+            style={{
+              fontSize: 28,
+              fontWeight: '500',
+              color: '#fff',
+              marginBottom: 30,
+            }}>
+            Iniciar sesion
+          </Text>
+          {Error && (
+            <Text
+              style={{
+                fontSize: 16,
+                fontWeight: "500",
+                color: "#f8e44b",
+                marginBottom: 30,
+              }}
+            >
+              ¡Error, campos vacios!
+            </Text>
+          )}
+
+          {errorglobal && (
+            <Text
+              style={{
+                fontSize: 16,
+                fontWeight: "500",
+                color: "#f8e44b",
+                marginBottom: 30,
+              }}
+            >
+              ¡Error, los datos de usuario son incorrectos!
+            </Text>
+          )}
+
+          <Text
+            style={{
+              fontSize: 14,
+              fontWeight: '400',
+              color: '#fff',
+              marginBottom: 5,
+            }}>
+            Correo electronico
+          </Text>
+          <InputField
+            icon={
+              <MaterialIcons
+                name="alternate-email"
+                size={20}
+                color="#fff"
+                style={{ marginRight: 5 }}
+              />
+            }
+            keyboardType="email-address"
+            value={email}
+            onChangeText={text => setEmail(text)}
+
+          />
+          <Text
+            style={{
+              fontSize: 14,
+              fontWeight: '400',
+              color: '#fff',
+              marginBottom: 5,
+            }}>
+            Contraseña
+          </Text>
+          <InputField
+            icon={
+              <Ionicons
+                name="ios-lock-closed-outline"
+                size={20}
+                color="#fff"
+                style={{ marginRight: 5 }}
+              />
+            }
+            inputType="password"
+            fieldButtonLabel={"Olvidaste?"}
+            fieldButtonFunction={() => { }}
+            value={password}
+            onChangeText={text => setPassword(text)}
+          />
+
+          <CustomButton label={"Entrar"} onPress={validardatos} />
+
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'center',
+              marginBottom: 30,
+            }}>
+            <Text
+              style={{
+                color: '#fff'
+              }}>¿Eres Nuevo?</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('Registrar')}>
+              <Text style={{ color: 'orange', fontWeight: '700' }}> Registrate</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      }
+    </View>
+
+
   );
 };
 const styles = StyleSheet.create({
@@ -153,7 +182,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     backgroundColor: '#07092c',
-    paddingHorizontal:25,
+    paddingHorizontal: 25,
   },
   background: {
     position: 'absolute',

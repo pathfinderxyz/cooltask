@@ -27,7 +27,7 @@ import Monedas from './../../assets/botones/monedas.png';
 import Req from './../../assets/botones/icon_req.png';
 import Retirocash from './../../assets/botones/retiro_cash.png';
 
-const AgenteExterno = ({ navigation }) => {
+const AgenteInterno = ({ navigation }) => {
   
   const [data, setData] = useState([]);
   
@@ -63,8 +63,8 @@ const AgenteExterno = ({ navigation }) => {
                 fontSize: 12,
               
               }}>
-              Solo con registrarte seras un {'\n'}
-              agente interno.         
+              Depositar 20 usdt. 
+                      
             </Text>
             <Image
                 source={Req}
@@ -98,7 +98,8 @@ const AgenteExterno = ({ navigation }) => {
                
               
               }}>
-              No genera ganancias.           
+               
+               Genera 10% diario de tu inversion.   
             </Text>
             <Image
                 source={Monedas}
@@ -131,7 +132,7 @@ const AgenteExterno = ({ navigation }) => {
                 fontSize: 12,
               
               }}>
-              No puede retirar.           
+             Siempre podras retirar.         
             </Text>
             <Image
                 source={Retirocash}
@@ -139,8 +140,31 @@ const AgenteExterno = ({ navigation }) => {
               />
 
           </View>
+         
+
        </View>
-       
+       <View style={styles.listemboton}>
+       <TouchableOpacity onPress={() =>navigation.navigate('Deposito')}
+        style={{
+          padding: 10,
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+        }}
+        >
+        <Text
+          style={{
+            color: '#fff',
+            fontSize: 13,
+            textAlign: 'center',
+            fontWeight: 'bold'
+          }}>
+          Convertirme en Agente externo
+        </Text>
+        
+
+        <MaterialIcons name="arrow-forward-ios" size={18} color="#fff" />
+      </TouchableOpacity>
+      </View>
     
     </View>
     </ScrollView>
@@ -169,4 +193,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default AgenteExterno ;
+export default AgenteInterno ;

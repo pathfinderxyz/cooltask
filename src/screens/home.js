@@ -368,7 +368,7 @@ const Homeapp = ({ navigation }) => {
                   textAlign: 'center',
                   fontSize: 10,
                 }}>
-                  5% Diario{'\n'}
+                  0% Diario{'\n'}
                 </Text>
               <TouchableOpacity onPress={() =>navigation.navigate('Agentes')}
               style={{
@@ -410,7 +410,7 @@ const Homeapp = ({ navigation }) => {
                 }}>
                   10% Diario{'\n'}
                 </Text>
-              <TouchableOpacity onPress={() =>navigation.navigate('Agentes')}
+              <TouchableOpacity onPress={() =>navigation.navigate('Agenteinterno')}
               style={{
                 backgroundColor: '#fd8029',
                 padding: 7,
@@ -458,7 +458,7 @@ const Homeapp = ({ navigation }) => {
                 }}>
                   15% Diario{'\n'}
                 </Text>
-              <TouchableOpacity onPress={() =>navigation.navigate('Agentes')}
+              <TouchableOpacity onPress={() =>navigation.navigate('Agentevip')}
                style={{
                 backgroundColor: '#fd8029',
                 padding: 7,
@@ -496,9 +496,10 @@ const Homeapp = ({ navigation }) => {
                   textAlign: 'center',
                   fontSize: 10,
                 }}>
-                  20% Diario{'\n'}
+                  20% Diario {'\n'}+30%xRef{'\n'}
+                 
                 </Text>
-              <TouchableOpacity onPress={() =>navigation.navigate('Agentes')}
+              <TouchableOpacity onPress={() =>navigation.navigate('Agentesuperior')}
               style={{
                 backgroundColor: '#fd8029',
                 padding: 7,

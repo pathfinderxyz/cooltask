@@ -20,6 +20,7 @@ const AppNav = () => {
           </View>
         ); 
     }
+  console.log('cargando es',isLoading);  
   console.log('Valor de token', userToken);
   return (
     <NavigationContainer>

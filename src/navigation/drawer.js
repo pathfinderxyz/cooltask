@@ -23,6 +23,9 @@ import Wallet from '../screens/cooltask/MiCuenta/wallet';
 import Descargarapp from '../screens/cooltask/MiCuenta/descargarapp';
 import Mipass from '../screens/cooltask/MiCuenta/mipass';
 import SoporteApp from '../screens/cooltask/MiCuenta/soporte';
+import AgenteVip from '../screens/cooltask/agentevip';
+import AgenteInterno from '../screens/cooltask/agenteinterno';
+import AgenteSuperior from '../screens/cooltask/agentesuperior';
 
 
 const Drawer = createDrawerNavigator();
@@ -120,7 +123,7 @@ export default function MyDrawer() {
           headerTintColor: '#fff',
         }}
       />
-       <Stack.Screen name="Miwallet" component={Wallet}
+      <Stack.Screen name="Miwallet" component={Wallet}
 
         options={{
           headerShown: true,
@@ -129,7 +132,7 @@ export default function MyDrawer() {
           headerTintColor: '#fff',
         }}
       />
-       <Stack.Screen name="Descargarapp" component={Descargarapp}
+      <Stack.Screen name="Descargarapp" component={Descargarapp}
 
         options={{
           headerShown: true,
@@ -138,7 +141,7 @@ export default function MyDrawer() {
           headerTintColor: '#fff',
         }}
       />
-       <Stack.Screen name="Mipass" component={Mipass}
+      <Stack.Screen name="Mipass" component={Mipass}
 
         options={{
           headerShown: true,
@@ -147,11 +150,38 @@ export default function MyDrawer() {
           headerTintColor: '#fff',
         }}
       />
-       <Stack.Screen name="Soporteapp" component={SoporteApp}
+      <Stack.Screen name="Soporteapp" component={SoporteApp}
 
         options={{
           headerShown: true,
           title: 'Soporte',
+          headerStyle: { backgroundColor: '#0a1d60', },
+          headerTintColor: '#fff',
+        }}
+      />
+      <Stack.Screen name="Agenteinterno" component={AgenteInterno}
+
+        options={{
+          headerShown: true,
+          title: 'Agente Interno',
+          headerStyle: { backgroundColor: '#0a1d60', },
+          headerTintColor: '#fff',
+        }}
+      />
+      <Stack.Screen name="Agentevip" component={AgenteVip}
+
+        options={{
+          headerShown: true,
+          title: 'Agente VIP',
+          headerStyle: { backgroundColor: '#0a1d60', },
+          headerTintColor: '#fff',
+        }}
+      />
+      <Stack.Screen name="Agentesuperior" component={AgenteSuperior}
+
+        options={{
+          headerShown: true,
+          title: 'Agente Superior',
           headerStyle: { backgroundColor: '#0a1d60', },
           headerTintColor: '#fff',
         }}
