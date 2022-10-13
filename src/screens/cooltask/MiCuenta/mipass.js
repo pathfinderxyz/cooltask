@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState,useEffect } from "react";
 import {
   SafeAreaView,
   ScrollView,
@@ -22,32 +22,43 @@ import SelectList from "react-native-dropdown-select-list";
 import axios from "axios";
 import { AuthContext } from "./../../../context/AuthContext";
 
-const url = "https://api.cooltask.homes/public/anuncios";
+const url = "https://api.cooltask.homes/public/usuarioclave";
+const urlinfouser = "https://api.cooltask.homes/public/usuarios";
 
 const Mipass= ({ navigation, route }) => {
  
-  const [titulo, setTitulo] = useState(route.params?.title);
-  const [descripcion, setDescripcion] = useState(route.params?.descripcion);
-  const [precio, setPrecio] = useState(route.params?.precio);
-  const idanuncio = route.params?.id;
+  const [pass, setPass] = useState(null);
+  const [data, setData] = useState([]);
 
   const { userInfo } = useContext(AuthContext);
+  const idusuario = userInfo[0].id;
 
   const [Error, setError] = useState(false);
 
-  const EditarAnuncio = () => {
-    console.log(idanuncio);
-    console.log(url + "/" + idanuncio);
+  const EditarPass = () => {
+    console.log(idusuario);
+    console.log(url + "/" + idusuario);
     axios
-      .put(url + "/" + idanuncio, {titulo,descripcion,precio})
+      .put(url + "/" + idusuario, {pass})
       .then((res) => {
         console.log(res.data);
-        navigation.navigate("RegistroExitoso");
+        navigation.navigate("Clavecambiada");
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
+
+  const peticionGet = async () => {
+    await axios.get(urlinfouser+'/'+idusuario).then((response) => {
+      setData(response.data[0]);
+    });
+  };
+
+useEffect(async() => {
+   await peticionGet();
+}, []);
 
 
   return (
@@ -86,12 +97,12 @@ const Mipass= ({ navigation, route }) => {
          Contraseña registrada
         </Text>
         <TextInput style={styles.InputE}
-          defaultValue={userInfo[0].password}
-          onChangeText={(text) => setTitulo(text)}
+          defaultValue={data.password}
+          onChangeText={(text) => setPass(text)}
         />
 
      
-        <CustomButton label={"Actualizar contraseña"} onPress={EditarAnuncio} />
+        <CustomButton label={"Actualizar contraseña"} onPress={EditarPass} />
 
 
     

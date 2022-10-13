@@ -30,14 +30,13 @@ import Retiro from './../assets/botones/retiro.png';
 import Deposito from './../assets/botones/deposito.png';
 import Guia from './../assets/botones/guia-icono.png';
 import Monedas from './../assets/botones/monedas.png';
-import Nivel1 from './../assets/niveles/nivel1.png';
+import Nivel3 from './../assets/niveles/nivel3.png';
 import { AuthContext } from '../context/AuthContext';
 
 /* const NavigatetoDetails = props => {
   props.navigation.navigate('GameDetails');
 } */
-const url = "https://api.cooltask.homes/public/anuncios";
-const urlfiltro = "https://api.cooltask.homes/public/anunciosfiltro";
+const url = "https://api.cooltask.homes/public/usuarios";
 
 const datacategoria = [
   { key: "todos", value: "todos" },
@@ -71,36 +70,18 @@ const Homeapp = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [cargando, setCargando] = useState(true);
 
-  const { userInfo } = useContext(AuthContext);
-
-  console.log(data);
+  const {userInfo} = useContext(AuthContext);
+  const iduser= userInfo[0].id;
 
   const peticionGet = async () => {
-    setCargando(true);
-    await axios.get(url).then((response) => {
+    await axios.get(url + "/" + iduser).then((response) => {
       setData(response.data[0]);
-      setCargando(false);
-
     });
   };
-
-  const peticionGetFiltro = () => {
-    console.log(selectedCat);
-    console.log(selectedPais);
-    axios.post(urlfiltro, { selectedCat, selectedPais }).then((res) => {
-
-      setData(res.data);
-
-      setModalVisible(false);
-    })
-      .catch((err) => {
-        console.log(err);
-        setModalVisible(false);
-      });
-  };
-
-
-
+  
+  useEffect(async() => {
+    await peticionGet();
+  }, []);
 
   return (
     <ScrollView>
@@ -119,11 +100,11 @@ const Homeapp = ({ navigation }) => {
               textTransform: 'uppercase',
               marginBottom: 10,
             }}>
-            {userInfo[0].nombre}
+            {data.nombre}
             
           </Text>
           <Image
-                source={Nivel1}
+                source={Nivel3}
                 style={{ width: 60, height: 60 }}
               />
           </View>
@@ -150,7 +131,8 @@ const Homeapp = ({ navigation }) => {
               <Image
                 source={Monedas}
                 style={{ width: 30, height: 30 }}
-              />$120.00
+              />${userInfo[0].Monto}
+            
             </Text>
             <Text
               style={{
@@ -159,7 +141,7 @@ const Homeapp = ({ navigation }) => {
                 fontSize: 13,
                 marginTop: 11,
               }}>
-              Superior
+              {data.calificacion}
             </Text>
           </View>
 

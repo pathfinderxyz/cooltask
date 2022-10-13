@@ -24,8 +24,10 @@ import Retiro from './../../assets/botones/retiro.png';
 import Deposito from './../../assets/botones/deposito.png';
 import Guia from './../../assets/botones/guia-icono.png';
 import Monedas from './../../assets/botones/monedas.png';
-import Nivel1 from './../../assets/niveles/nivel1.png';
+import Nivel3 from './../../assets/niveles/nivel3.png';
 import { AuthContext } from '../../context/AuthContext';
+
+const url = "https://api.cooltask.homes/public/usuarios";
 
 
 const Micuenta = ({ navigation }) => {
@@ -40,7 +42,18 @@ const Micuenta = ({ navigation }) => {
   const { userInfo } = useContext(AuthContext);
   const {Logout}= useContext(AuthContext);
 
-  console.log(data);
+
+  const iduser= userInfo[0].id;
+
+  const peticionGet2 = async () => {
+    await axios.get(url + "/" + iduser).then((response) => {
+      setData(response.data[0]);
+    });
+  };
+  
+  useEffect(async() => {
+    await peticionGet2();
+  }, []);
 
   return (
     <ScrollView>
@@ -59,11 +72,11 @@ const Micuenta = ({ navigation }) => {
               textTransform: 'uppercase',
               marginBottom: 10,
             }}>
-            Usuario: {userInfo[0].nombre}
+            Usuario: {data.nombre}
             
           </Text>
           <Image
-                source={Nivel1}
+                source={Nivel3}
                 style={{ width: 60, height: 60 }}
               />
           </View>
@@ -90,7 +103,7 @@ const Micuenta = ({ navigation }) => {
               <Image
                 source={Monedas}
                 style={{ width: 30, height: 30 }}
-              />$120.00
+              />${data.Monto}
             </Text>
             
             <Text
@@ -100,7 +113,7 @@ const Micuenta = ({ navigation }) => {
                 fontSize: 13,
                 marginTop: 11,
               }}>
-              Superior
+              {data.calificacion}
             </Text>
             
           </View>
@@ -111,9 +124,9 @@ const Micuenta = ({ navigation }) => {
               marginTop:10
             
             }}>
-            Correo: tamayo@gmail.com{'\n'}
-            Codigo de invitacion: QWWDQE <Ionicons name="copy" color='white' size={16} />{'\n'}
-            Referidos: 0
+            Correo: {data.username}{'\n'}
+            Codigo de invitacion: {data.micodigoinv} <Ionicons name="copy" color='white' size={16} />{'\n'}
+           
           </Text>
           
 

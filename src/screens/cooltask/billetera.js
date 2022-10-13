@@ -49,7 +49,7 @@ const Billetera = ({ navigation }) => {
               }}>
               $122.00 USDT
             </Text>
-            <TouchableOpacity
+            <TouchableOpacity onPress={() =>navigation.navigate('Retiro')}
             style={{
               backgroundColor: '#07092c',
               padding: 8,

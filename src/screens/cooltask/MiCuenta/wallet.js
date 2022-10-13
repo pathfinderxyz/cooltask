@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState,useEffect } from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -24,43 +24,102 @@ import axios from "axios";
 import { AuthContext } from './../../../context/AuthContext';
 import usdtimg from './../../../assets/botones/usdt.png';
 
-const url = "https://api.cooltask.homes/public/usuarios";
+const url = "https://api.cooltask.homes/public/wallet";
+const urlinfouser = "https://api.cooltask.homes/public/usuarios";
+
 
 const Wallet=  ({navigation})=> {
 
   const { userInfo } = useContext(AuthContext);
-
-  const [Nombre, setNombre] = useState(null);
+  const [verificarwallet, setVerificarWallet] = useState("");
+  const [wallet, setWallet] = useState(null);
+  const [cambiowallet, setCambioWallet] = useState(false);
+  const [data, setData] = useState([]);
   const usuario = userInfo[0].id;
+  
 
   const [Error, setError] = useState(false);
 
   const validardatos = () => {
-    console.log(Nombre);
+    console.log(wallet);
     console.log(usuario);
-    if (Nombre !== null) {
-      EditarUsuario();
+    if (wallet!== null) {
+      EditarWallet();
     } else {
       setError(true);
     }
   };
 
-  const EditarUsuario = () => {
+  const EditarWallet = () => {
     axios
-      .put(url+'/'+usuario, {Nombre})
+      .put(url+'/'+usuario, {wallet})
       .then((res) => {
         console.log(res.data);
-        navigation.navigate("MisDatos");
+        navigation.navigate("Walletregistrada");
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
+  
+  const peticionGet = async () => {
+    await axios.get(urlinfouser+'/'+usuario).then((response) => {
+      setData(response.data[0]);
+      setCambioWallet(true);
+    });
+  };
+
+  console.log(data.wallet);
+
+useEffect(async() => {
+   await peticionGet();
+}, [cambiowallet]);
+
   return (
     <ScrollView>
       <View showsVerticalScrollIndicator={false}>
  
+       {data.wallet !=="" ?
+       <View style={styles.listemhistorial}>
+        <Text
+          style={{
+            fontSize: 15,
+            fontWeight: "500",
+            color: "#000",
+            marginBottom: 30,
+          }}
+        >
+         Mi wallet
+        </Text>
+       
+        <Text
+          style={{
+            fontSize: 14,
+            color: '#07092c',
+            marginBottom: 25,
+          }}
+        >
+        {data.wallet}
+        </Text>
+
+        <TouchableOpacity onPress={() =>navigation.navigate('Soporteapp')}
+            style={{
+              backgroundColor: '#07092c',
+              padding: 8,
+              borderRadius: 7,
+            }}>
+            <Text style={{
+              color: '#fff',
+              textAlign: 'center',
+              fontSize: 14,
+            }}>
+             Solicitar cambio
+            </Text>
+          </TouchableOpacity>
+
+        </View>
+        :
         <View style={styles.listemhistorial}>
         <Text
           style={{
@@ -95,8 +154,8 @@ const Wallet=  ({navigation})=> {
         </Text>
 
         <InputField
-          value={Nombre}
-          onChangeText={(text) => setNombre(text)}
+          value={wallet}
+          onChangeText={(text) => setWallet(text)}
         />
           <Text
           style={{
@@ -110,7 +169,7 @@ const Wallet=  ({navigation})=> {
         </Text>
       
 
-      <TouchableOpacity
+      <TouchableOpacity onPress={validardatos}
             style={{
               backgroundColor: '#07092c',
               padding: 12,
@@ -149,6 +208,8 @@ const Wallet=  ({navigation})=> {
 
 
         </View>
+
+      }
 
       </View>
     </ScrollView>
