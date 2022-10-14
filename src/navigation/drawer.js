@@ -33,6 +33,8 @@ import AgenteSuperior from "../screens/cooltask/agentesuperior";
 import WalletRegistrada from "../screens/cooltask/MiCuenta/walletregistrada";
 import ClaveCambiada from "../screens/cooltask/MiCuenta/clavecambiada";
 import Confirmarretiro from "../screens/cooltask/confirmarretiro";
+import Confirmardeposito from "../screens/cooltask/confirmardeposito";
+import Depositoproceso from "../screens/cooltask/depositoenproceso";
 
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
@@ -237,6 +239,26 @@ export default function MyDrawer() {
           headerShown: true,
           title: "Retiro procesado",
           headerLeft: null,
+          headerStyle: { backgroundColor: "#0a1d60" },
+          headerTintColor: "#fff",
+        }}
+      />
+       <Stack.Screen
+        name="Confirmardeposito"
+        component={Confirmardeposito}
+        options={{
+          headerShown: true,
+          title: "Confirmando Deposito",
+          headerStyle: { backgroundColor: "#0a1d60" },
+          headerTintColor: "#fff",
+        }}
+      />
+       <Stack.Screen
+        name="depositoproceso"
+        component={Depositoproceso}
+        options={{
+          headerShown: true,
+          title: "Deposito en proceso",
           headerStyle: { backgroundColor: "#0a1d60" },
           headerTintColor: "#fff",
         }}

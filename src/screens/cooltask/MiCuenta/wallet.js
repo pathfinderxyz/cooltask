@@ -72,8 +72,8 @@ const Wallet=  ({navigation})=> {
 
   console.log(data.wallet);
 
-useEffect(async() => {
-   await peticionGet();
+useEffect(() => {
+   peticionGet();
 }, [cambiowallet]);
 
   return (

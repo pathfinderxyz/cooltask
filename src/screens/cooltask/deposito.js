@@ -78,7 +78,7 @@ const Deposito = ({ navigation }) => {
                 Tron(TRC20)
 
             </Text>
-            <TouchableOpacity
+            <TouchableOpacity onPress={()=>navigation.navigate("Confirmardeposito")}
             style={{
               backgroundColor: '#07092c',
               padding: 12,

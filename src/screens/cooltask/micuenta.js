@@ -51,8 +51,8 @@ const Micuenta = ({ navigation }) => {
     });
   };
   
-  useEffect(async() => {
-    await peticionGet2();
+  useEffect(() => {
+    peticionGet2();
   }, []);
 
   return (

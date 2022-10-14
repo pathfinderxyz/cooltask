@@ -69,6 +69,7 @@ const Homeapp = ({ navigation }) => {
 
   const [modalVisible, setModalVisible] = useState(false);
   const [cargando, setCargando] = useState(true);
+  const [recargar, setRecargar] = useState(false);
 
   const {userInfo} = useContext(AuthContext);
   const iduser= userInfo[0].id;
@@ -78,10 +79,14 @@ const Homeapp = ({ navigation }) => {
       setData(response.data[0]);
     });
   };
-  
-  useEffect(async() => {
-    await peticionGet();
-  }, []);
+  setTimeout(()=>{
+     setRecargar(!recargar);
+},2000);
+
+
+  useEffect(() => {
+   peticionGet();
+  }, [recargar]);
 
   return (
     <ScrollView>
@@ -131,7 +136,7 @@ const Homeapp = ({ navigation }) => {
               <Image
                 source={Monedas}
                 style={{ width: 30, height: 30 }}
-              />${userInfo[0].Monto}
+              />${data.Monto}
             
             </Text>
             <Text

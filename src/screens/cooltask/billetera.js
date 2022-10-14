@@ -1,11 +1,29 @@
-import * as React from 'react';
+import React, { useContext, useState,useEffect } from 'react';
 import { View, Text, Button, TouchableOpacity, Image, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import usdtimg from './../../assets/botones/usdt.png';
+import { AuthContext } from './../../context/AuthContext';
+import axios from "axios";
+
+const url = "https://api.cooltask.homes/public/usuarios";
 
 const Billetera = ({ navigation }) => {
+  const { userInfo } = useContext(AuthContext);
+  const [data, setData] = useState([]);
+
+  const usuario = userInfo[0].id;
+
+  const peticionGet = async () => {
+    await axios.get(url + "/" + usuario).then((response) => {
+      setData(response.data[0]);
+    });
+  };
+  console.log(data);
+  useEffect(async() => {
+    await peticionGet();
+  }, []);
   return (
     <View style={{ marginHorizontal: 10}}>
 
@@ -47,7 +65,7 @@ const Billetera = ({ navigation }) => {
                 fontSize: 31,
                 marginBottom: 20,
               }}>
-              $122.00 USDT
+              ${data.Monto} USDT
             </Text>
             <TouchableOpacity onPress={() =>navigation.navigate('Retiro')}
             style={{
