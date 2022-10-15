@@ -47,7 +47,7 @@ const CustomDrawer = props => {
                 color: '#fff',
                 marginRight: 5,
               }}>
-             Membresia: Free
+             {userInfo[0].calificacion}
             </Text>
             
           </View>

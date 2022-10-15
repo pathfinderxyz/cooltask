@@ -99,7 +99,8 @@ const AgenteInterno = ({ navigation }) => {
               
               }}>
                
-               Genera 10% diario de tu inversion.   
+               Genera 10% diario de tu inversion.{'\n'}
+               Ganara 25% de la recarga de su referido 
             </Text>
             <Image
                 source={Monedas}

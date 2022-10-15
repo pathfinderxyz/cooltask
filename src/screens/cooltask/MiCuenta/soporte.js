@@ -35,7 +35,7 @@ const AbriTelegram = () => {
             marginBottom:15,
             marginTop:20
             }}>
-           Grupo de Telegram:
+           Atencion al cliente:
           </Text>
 
         <TouchableOpacity onPress={AbriTelegram}

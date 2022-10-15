@@ -35,6 +35,7 @@ const Micuenta = ({ navigation }) => {
   const [data, setData] = useState([]);
   const [selectedCat, setSelectedCat] = useState("");
   const [selectedPais, setSelectedPais] = useState("");
+  const [recargar, setRecargar] = useState(false);
 
   const [modalVisible, setModalVisible] = useState(false);
   const [cargando, setCargando] = useState(true);
@@ -50,6 +51,8 @@ const Micuenta = ({ navigation }) => {
       setData(response.data[0]);
     });
   };
+
+
   
   useEffect(() => {
     peticionGet2();

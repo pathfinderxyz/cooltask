@@ -3,7 +3,7 @@ import { View, Text, Button, TouchableOpacity, Image, StyleSheet,ScrollView } fr
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import walletimg from './../../assets/botones/walletusdt.png';
+import walletimg from './../../assets/botones/walletusdt.jpg';
 
 const Deposito = ({ navigation }) => {
   return (
@@ -56,7 +56,7 @@ const Deposito = ({ navigation }) => {
                 fontSize: 13,
                 marginBottom: 20,
               }}>
-                0x3bE018a933B7d920a5d553DF3473c52b17bfB3A0
+                TA1dFgth42vhnZkQn4ZTpwVkZqtdVtWDXb
 
             </Text>
             <Text

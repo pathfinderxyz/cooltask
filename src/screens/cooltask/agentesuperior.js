@@ -99,11 +99,11 @@ const AgenteSuperior = ({ navigation }) => {
                
               
               }}>
-              Ganará el 20% diario de su inversión {'\n'}
-              y siempre podrá retirar.   {'\n'}{'\n'}
+              Ganará el 20% diario de su inversión {'\n'}{'\n'}
               Además ganará el 30% de la inversión {'\n'}
               de sus referidos cuando tenga {'\n'}
-              más de 10 referidos.        
+              más de 10 referidos.  {'\n'} {'\n'} 
+              Adicional genera 50 usdt semanal{'\n'}  
             </Text>
             <Image
                 source={Monedas}

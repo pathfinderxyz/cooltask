@@ -64,7 +64,7 @@ const AgenteExterno = ({ navigation }) => {
               
               }}>
               Solo con registrarte seras un {'\n'}
-              agente interno.         
+              agente externo.         
             </Text>
             <Image
                 source={Req}
