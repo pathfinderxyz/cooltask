@@ -515,7 +515,6 @@ const Homeapp = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
-    marginTop:41,
   },
   container2: {
     marginTop:-4,

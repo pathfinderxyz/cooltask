@@ -41,8 +41,7 @@ const Wallet=  ({navigation})=> {
   const [Error, setError] = useState(false);
 
   const validardatos = () => {
-    console.log(wallet);
-    console.log(usuario);
+  
     if (wallet!== null) {
       EditarWallet();
     } else {
@@ -54,7 +53,7 @@ const Wallet=  ({navigation})=> {
     axios
       .put(url+'/'+usuario, {wallet})
       .then((res) => {
-        console.log(res.data);
+     
         navigation.navigate("Walletregistrada");
       })
       .catch((err) => {
@@ -70,7 +69,7 @@ const Wallet=  ({navigation})=> {
     });
   };
 
-  console.log(data.wallet);
+
 
 useEffect(() => {
    peticionGet();

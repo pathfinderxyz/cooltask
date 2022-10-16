@@ -35,13 +35,22 @@ const Mipass= ({ navigation, route }) => {
 
   const [Error, setError] = useState(false);
 
+  const validardatos = () => {
+   
+    if (pass == null) {
+      setError(true);
+    } else {
+      EditarPass();
+    }
+  };
+
+
   const EditarPass = () => {
-    console.log(idusuario);
-    console.log(url + "/" + idusuario);
+   
     axios
       .put(url + "/" + idusuario, {pass})
       .then((res) => {
-        console.log(res.data);
+     
         navigation.navigate("Clavecambiada");
       })
       .catch((err) => {
@@ -77,13 +86,13 @@ useEffect(async() => {
         {Error && (
           <Text
             style={{
-              fontSize: 15,
+              fontSize: 13,
               fontWeight: "500",
-              color: "#000",
+              color: "red",
               marginBottom: 30,
             }}
           >
-            ¡Error, por favor rellene todos los campos!
+            ¡Error, la nueva contraseña no puede estar vacia!
           </Text>
         )}
         <Text
@@ -97,12 +106,27 @@ useEffect(async() => {
          Contraseña registrada
         </Text>
         <TextInput style={styles.InputE}
-          defaultValue={data.password}
+          editable={false}
+          value={data.password}
+        />
+
+        <Text
+          style={{
+            fontSize: 12,
+            fontWeight: "400",
+            color: "#000",
+            marginBottom: 5,
+          }}
+        >
+         Nueva Contraseña
+        </Text>
+        <TextInput style={styles.InputE}
+          value={pass}
           onChangeText={(text) => setPass(text)}
         />
 
      
-        <CustomButton label={"Actualizar contraseña"} onPress={EditarPass} />
+        <CustomButton label={"Actualizar contraseña"} onPress={validardatos} />
 
 
     

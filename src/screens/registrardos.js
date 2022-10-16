@@ -57,7 +57,7 @@ const RegistrarDos = ({navigation}) => {
 
   const RegistrarCliente = () =>{
     axios.post(url,{nombre,correo,selected,pass,rol}).then(res => {
-      console.log(res.data);
+    
       navigation.navigate('GraciasRegistrar');
     })
       .catch((err) => {

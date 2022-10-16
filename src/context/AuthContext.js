@@ -33,8 +33,7 @@ export const AuthProvider = ({ children }) => {
         setIsLoading(false);
     }
 
-    console.log(userInfo);
-    console.log(userToken);
+  
 
     const Logout = () => {
         setIsLoading(true);

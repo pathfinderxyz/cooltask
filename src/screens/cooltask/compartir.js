@@ -5,10 +5,23 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Monedas from './../../assets/botones/monedas.png';
 import { AuthContext } from '../../context/AuthContext';
+import * as Clipboard from 'expo-clipboard';
 
 const Compartir = ({ navigation }) => {
 
-  const { userInfo } = useContext(AuthContext);
+  const {userInfo} = useContext(AuthContext);
+  const [copiedText, setCopiedText] = useState('');
+
+  const micodigo=userInfo[0].micodigoinv;
+
+  const copyToClipboard = async () => {
+    await Clipboard.setStringAsync("https://cooltask.homes/Registrar?codigo="+micodigo);
+  };
+
+  const fetchCopiedText = async () => {
+    const text = await Clipboard.getStringAsync();
+    setCopiedText(text);
+  };
 
   return (
     <View style={{ marginHorizontal: 10}}>
@@ -34,7 +47,7 @@ const Compartir = ({ navigation }) => {
               textTransform: 'uppercase',
               marginBottom: 10,
             }}>
-          Codigo de Invitación
+         Enlace de Invitación
             
           </Text>
           
@@ -43,13 +56,13 @@ const Compartir = ({ navigation }) => {
             <Text
               style={{
                 color: '#ed8900',
-                fontWeight: '800',
-                fontSize: 31,
+                fontWeight: '400',
+                fontSize: 13,
                 marginBottom: 30,
               }}>
-             {userInfo[0].micodigoinv}
+             https://cooltask.homes/Registrar?codigo={micodigo}
             </Text>
-            <TouchableOpacity
+            <TouchableOpacity onPress={copyToClipboard}
             style={{
               backgroundColor: '#07092c',
               padding: 8,
@@ -75,7 +88,7 @@ const Compartir = ({ navigation }) => {
         borderColor:'#000'
   
       }}>
-        Haz que tus amigos se registren usando este codigo y se convertira en tu referido directo.
+        Haz que tus amigos se registren usando este enlace y se convertira en tu referido directo.
       </Text>
         </View>
 

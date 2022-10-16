@@ -98,7 +98,7 @@ const AgenteExterno = ({ navigation }) => {
                
               
               }}>
-              No genera ganancias.           
+              Ganara el 25% de la recarga de tu referido.           
             </Text>
             <Image
                 source={Monedas}

@@ -29,7 +29,7 @@ const CambiarPass =  ({navigation})=> {
   const { userInfo } = useContext(AuthContext);
   const [Ver, setVer] = useState(false);
 
-  console.log(Ver);
+
 
 
  /*  const [Nombre, setNombre] = useState(null);

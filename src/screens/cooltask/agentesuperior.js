@@ -33,7 +33,7 @@ const AgenteSuperior = ({ navigation }) => {
 
   const { userInfo } = useContext(AuthContext);
 
-  console.log(data);
+
 
   return (
     <ScrollView>

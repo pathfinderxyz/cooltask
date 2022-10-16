@@ -23,11 +23,11 @@ const AnunciosContratados = ({navigation, route}) => {
   const peticionGet = async () => {
     await axios.get(url + "/" + idusuario).then(response => {
       setData(response.data);
-      console.log(response.data);
+    
     })
   }
 
-  console.log(data);
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(async () => {
     await peticionGet();

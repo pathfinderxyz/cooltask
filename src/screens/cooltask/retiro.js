@@ -41,12 +41,13 @@ const Retiro =  ({navigation})=> {
 
   const [Error, setError] = useState(false);
   const [Errorcantidad, setErrorcantidad] = useState(false);
+  
 
   const validardatos = () => {
     setError(false);
     setErrorcantidad(false);
     if (Retiromonto !== null) {
-      if(Retiromonto > data.Monto || Retiromonto < 10 ){
+      if(Retiromonto > data.Monto || Retiromonto < 10 || data.wallet==""){
         setErrorcantidad(true);
       }else{
         setModalVisible(true);
@@ -58,7 +59,7 @@ const Retiro =  ({navigation})=> {
 
   const Procesaretiro = () => {
     axios.post(urlretiros, {usuario,Retiromonto}).then((res) => {
-      console.log('Retiro procesado');
+
       peticionGet();
       setModalVisible(false);
       navigation.navigate("Confirmarretiro");
@@ -117,12 +118,12 @@ const Retiro =  ({navigation})=> {
               marginBottom: 30,
             }}
           >
-            ¡Error, Usted no posee esa cantidad disponible o no llega al minimo!
+            ¡Error, Usted no posee esa cantidad disponible, no llega al minimo, o no tiene ninguna wallet registrada!
           </Text>
         )}
         <Text
           style={{
-            fontSize: 11,
+            fontSize: 12,
             fontWeight: "400",
             color: "green",
             marginBottom: 5,
@@ -172,9 +173,9 @@ const Retiro =  ({navigation})=> {
           }}
         >
           * La cantidad minima de retiro es de 10 usdt.{'\n'}{'\n'}
-          * Para retirar debe tener al menos 2 Referidos con un deposito confirmado.{'\n'}{'\n'}
           * Los Retiros pueden tardar de 2 a 6 Horas en hacerse efectivo tenga paciencia.{'\n'}{'\n'}
-          * Los depositos seran realizados a Wallet registrada en su cuenta.
+          * Los depositos seran realizados a la Wallet registrada en su cuenta, para registrar su wallet 
+          vaya a la seccion Cuenta-Wallet-Vincular.
         </Text>
 
 
@@ -208,7 +209,7 @@ const Retiro =  ({navigation})=> {
             fontWeight: "500",
           }}
         >
-         0x3bE018a933B7d920a5d553DF3473c52b17bfB3A0
+         {data.wallet} 
         </Text>
         </View>
 

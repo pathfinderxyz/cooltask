@@ -23,7 +23,7 @@ const Movies = ({navigation, route}) => {
     await axios.get(url).then(response => {
       setData(response.data);
       setDataFiltrada(response.data);
-      console.log(response.data);
+   
     })
   }
 
@@ -32,7 +32,7 @@ const Movies = ({navigation, route}) => {
     filtrar(e.target.value);
   }
 
-  console.log(busqueda);
+
 
   const filtrar=(terminoBusqueda)=>{
     var resultadosBusqueda=datafiltrada.filter((elemento)=>{
@@ -46,7 +46,7 @@ const Movies = ({navigation, route}) => {
     setData(resultadosBusqueda);
   }
 
-  console.log(datafiltrada);
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(async () => {
     await peticionGet();

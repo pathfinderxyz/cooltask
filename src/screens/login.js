@@ -149,7 +149,7 @@ const Login = ({ navigation }) => {
             }
             inputType="password"
             fieldButtonLabel={"Olvidaste?"}
-            fieldButtonFunction={() => { }}
+            fieldButtonFunction={() => navigation.navigate("Olvidopass")}
             value={password}
             onChangeText={text => setPassword(text)}
           />

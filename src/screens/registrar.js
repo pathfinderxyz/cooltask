@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useContext,useEffect, useState} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -21,21 +21,24 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import { LinearGradient } from "expo-linear-gradient";
 import SelectList from "react-native-dropdown-select-list";
 import axios from "axios";
+import * as Linking from "expo-linking";
 
 const url = "https://api.cooltask.homes/public/usuarios";
 
 const Registrar = ({ navigation }) => {
 
+  const [data, setData] = useState([]);
+
   const [nombre, setNombre] = useState(null);
   const [correo, setCorreo] = useState(null);
-  const [codigo, setCodigo] = useState(null);
   const [pass, setPass] = useState(null);
   
+  const codigo = data.codigo;
 
   const [Error, setError] = useState(false);
 
   const validardatos = () => {
-    if (nombre == null || correo == null || pass == null ) {
+    if (nombre == null || correo == null || codigo == null || pass == null ) {
       setError(true);
     } else {
       RegistrarCliente();
@@ -43,10 +46,11 @@ const Registrar = ({ navigation }) => {
   };
 
   const RegistrarCliente = () => {
+    
     axios
-      .post(url, { nombre, correo,codigo, pass, })
+      .post(url, { nombre, correo,codigo, pass })
       .then((res) => {
-        console.log(res.data);
+    
         navigation.navigate("GraciasRegistrar");
       })
       .catch((err) => {
@@ -54,6 +58,17 @@ const Registrar = ({ navigation }) => {
       });
   };
 
+  function handleDeepLink(event) {
+    let data = Linking.parse(event.url);
+    setData(data.queryParams);
+    }
+  
+  useEffect(() => {
+    Linking.addEventListener("url", handleDeepLink);
+    }, []);
+
+
+     
   return (
     <View  style={styles.container}>
       <LinearGradient
@@ -95,6 +110,7 @@ const Registrar = ({ navigation }) => {
         }}
       >
         Nombre de Usuario
+        
       </Text>
 
       <InputField
@@ -152,8 +168,9 @@ const Registrar = ({ navigation }) => {
             style={{ marginRight: 5 }}
           />
         }
-        value={codigo}
-        onChangeText={(text) => setCodigo(text)}
+        editable = {false} 
+        keyboardType="text"
+        value={data.codigo}
       />
 
       <Text

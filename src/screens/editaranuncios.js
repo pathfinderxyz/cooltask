@@ -34,12 +34,11 @@ const EditarAnuncios = ({ navigation, route }) => {
   const [Error, setError] = useState(false);
 
   const EditarAnuncio = () => {
-    console.log(idanuncio);
-    console.log(url + "/" + idanuncio);
+   
     axios
       .put(url + "/" + idanuncio, {titulo,descripcion,precio})
       .then((res) => {
-        console.log(res.data);
+        
         navigation.navigate("RegistroExitoso");
       })
       .catch((err) => {
@@ -48,11 +47,11 @@ const EditarAnuncios = ({ navigation, route }) => {
   };
 
   const EliminarAnuncio = () => {
-    console.log(idanuncio);
+
     axios
       .delete(url + "/" + idanuncio)
       .then((res) => {
-        console.log(res.data);
+     
         navigation.navigate("Misanuncios");
       })
       .catch((err) => {

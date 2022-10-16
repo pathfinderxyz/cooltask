@@ -33,7 +33,7 @@ const Guia = ({ navigation }) => {
 
   const { userInfo } = useContext(AuthContext);
 
-  console.log(data);
+
 
   return (
     <ScrollView>
@@ -62,9 +62,9 @@ const Guia = ({ navigation }) => {
                 fontSize: 12,
                 marginTop: 9,
               }}>
-              Sera aquel que se registro, No {'\n'}
-              podra retirar. ni obtener recompensas,{'\n'}
-              por referidos que recarguen.
+              Sera aquel que se registro, gana {'\n'}
+              el 25%  de la recarga de un  {'\n'}
+              referido, no puede retirar.
               
             </Text>
 
@@ -97,7 +97,8 @@ const Guia = ({ navigation }) => {
               }}>
               Sera aquel que se registro y recargo{'\n'}
               al menos 20 usdt, ganara diario el 10%{'\n'}
-              de su inversion y siempre podras retirar.
+              de su inversion y el 25% de la recarga{'\n'}
+              de su referido siempre podras retirar.
               
             </Text>
 

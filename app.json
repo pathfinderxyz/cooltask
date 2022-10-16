@@ -1,5 +1,6 @@
 {
   "expo": {
+    "schema":"Cooltask",
     "name": "CoolTask",
     "slug": "CoolTask",
     "version": "1.0.0",

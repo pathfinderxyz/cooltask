@@ -10,6 +10,7 @@ export default function InputField({
   fieldButtonFunction,
   value,
   onChangeText,
+  defaultValue
 }) {
   return (
     <View
@@ -37,6 +38,7 @@ export default function InputField({
           keyboardType={keyboardType}
           style={{flex: 1, paddingVertical: 0, color: '#fff'}}
           value={value}
+          defaultValue={defaultValue}
           onChangeText={onChangeText}
         />
       )}

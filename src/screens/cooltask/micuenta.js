@@ -78,46 +78,24 @@ const Micuenta = ({ navigation }) => {
             Usuario: {data.nombre}
             
           </Text>
-          <Image
-                source={Nivel3}
-                style={{ width: 60, height: 60 }}
-              />
-          </View>
+          
           <Text
-            style={{
-              color: '#fff',
-              fontSize: 16,
-              fontWeight: 'bold',
-              marginTop:-22
-            }}>
-            Saldo
-          </Text>
+              style={{
+                color: '#fff',
+                fontWeight: 'bold',
+                fontSize: 13,
+              }}>
+              {data.calificacion}
+            </Text>
+          </View>
+        
           <View style={{
             flexDirection: "row",
             justifyContent: "space-between",
           }}>
 
-            <Text
-              style={{
-                color: '#fff',
-                fontWeight: 'bold',
-                fontSize: 27,
-              }}>
-              <Image
-                source={Monedas}
-                style={{ width: 30, height: 30 }}
-              />${data.Monto}
-            </Text>
-            
-            <Text
-              style={{
-                color: '#fff',
-                fontWeight: 'bold',
-                fontSize: 13,
-                marginTop: 11,
-              }}>
-              {data.calificacion}
-            </Text>
+        
+          
             
           </View>
           <Text
@@ -128,7 +106,7 @@ const Micuenta = ({ navigation }) => {
             
             }}>
             Correo: {data.username}{'\n'}
-            Codigo de invitacion: {data.micodigoinv} <Ionicons name="copy" color='white' size={16} />{'\n'}
+            Codigo de invitacion: {data.micodigoinv}{'\n'}
            
           </Text>
           

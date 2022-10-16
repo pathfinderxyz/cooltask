@@ -34,8 +34,7 @@ const CambiarEmail =  ({navigation})=> {
   const [Error, setError] = useState(false);
 
   const validardatos = () => {
-    console.log(Nombre);
-    console.log(usuario);
+  
     if (Nombre !== null) {
       EditarUsuario();
     } else {
@@ -47,7 +46,7 @@ const CambiarEmail =  ({navigation})=> {
     axios
       .put(url+'/'+usuario, {Nombre})
       .then((res) => {
-        console.log(res.data);
+    
         navigation.navigate("MisDatos");
       })
       .catch((err) => {

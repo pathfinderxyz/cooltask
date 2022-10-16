@@ -63,13 +63,7 @@ const CrearAnuncio =  ({navigation})=> {
   const [Error, setError] = useState(false);
 
   const validardatos = () => {
-    console.log(titulo);
-    console.log(selectedcat);
-    console.log(descripcion);
-    console.log(selected);
-    console.log(ciudad);
-    console.log(precio);
-    console.log(usuario);
+  
     if (titulo !== null && selectedcat !== null && descripcion !== null && selected !== null && ciudad !== null && precio !== null) {
       RegistrarCliente();
     } else {
@@ -81,7 +75,7 @@ const CrearAnuncio =  ({navigation})=> {
     axios
       .post(url, { titulo, selectedcat, descripcion, selected, ciudad, precio, tipo, usuario })
       .then((res) => {
-        console.log(res.data);
+     
         navigation.navigate("RegistroExitoso");
       })
       .catch((err) => {

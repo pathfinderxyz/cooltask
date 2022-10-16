@@ -35,7 +35,7 @@ const AgenteInterno = ({ navigation }) => {
 
   const { userInfo } = useContext(AuthContext);
 
-  console.log(data);
+
 
   return (
     <ScrollView>
@@ -159,7 +159,7 @@ const AgenteInterno = ({ navigation }) => {
             textAlign: 'center',
             fontWeight: 'bold'
           }}>
-          Convertirme en Agente externo
+          Convertirme en Agente interno
         </Text>
         
 

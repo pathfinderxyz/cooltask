@@ -35,6 +35,7 @@ import ClaveCambiada from "../screens/cooltask/MiCuenta/clavecambiada";
 import Confirmarretiro from "../screens/cooltask/confirmarretiro";
 import Confirmardeposito from "../screens/cooltask/confirmardeposito";
 import Depositoproceso from "../screens/cooltask/depositoenproceso";
+import Concurso from "../screens/cooltask/concurso";
 
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
@@ -259,6 +260,16 @@ export default function MyDrawer() {
         options={{
           headerShown: true,
           title: "Deposito en proceso",
+          headerStyle: { backgroundColor: "#0a1d60" },
+          headerTintColor: "#fff",
+        }}
+      />
+       <Stack.Screen
+        name="concurso"
+        component={Concurso}
+        options={{
+          headerShown: true,
+          title: "Concurso",
           headerStyle: { backgroundColor: "#0a1d60" },
           headerTintColor: "#fff",
         }}

@@ -7,6 +7,10 @@ import p1 from './../../assets/publicidad/hoy/p1.jpg';
 import p2 from './../../assets/publicidad/hoy/p2.jpg';
 import p3 from './../../assets/publicidad/hoy/p3.jpg';
 import p4 from './../../assets/publicidad/hoy/p4.jpg';
+import p5 from './../../assets/publicidad/hoy/p5.jpg';
+import p6 from './../../assets/publicidad/hoy/p6.jpg';
+import p7 from './../../assets/publicidad/hoy/p7.png';
+import p8 from './../../assets/publicidad/hoy/p8.png';
 import { AuthContext } from './../../context/AuthContext';
 import axios from "axios";
 
@@ -21,10 +25,20 @@ const Tareas = ({ navigation }) => {
   const [modalVisible2, setModalVisible2] = useState(false);
   const [modalVisible3, setModalVisible3] = useState(false);
   const [modalVisible4, setModalVisible4] = useState(false);
+  const [modalVisible5, setModalVisible5] = useState(false);
+  const [modalVisible6, setModalVisible6] = useState(false);
+  const [modalVisible7, setModalVisible7] = useState(false);
+  const [modalVisible8, setModalVisible8] = useState(false);
   const pub1 = "p1";
   const pub2= "p2";
   const pub3 = "p3";
   const pub4 = "p4";
+  const pub5 = "p5";
+  const pub6= "p6";
+  const pub7 = "p7";
+  const pub8 = "p8";
+
+  let porc = 0.025;
 
   const peticionGet = async () => {
     await axios.get(url + "/" + usuario).then((response) => {
@@ -59,6 +73,37 @@ const Tareas = ({ navigation }) => {
       setModalVisible4(false);
     });
   };
+
+  const peticionGetp5 = async () => {
+    await axios.post(urlpublicidad,{usuario,pub5}).then((response) => {
+      peticionGet();
+      setModalVisible5(false);
+    });
+  };
+
+  const peticionGetp6 = async () => {
+    await axios.post(urlpublicidad,{usuario,pub6}).then((response) => {
+      peticionGet();
+      setModalVisible6(false);
+    });
+  };
+
+  const peticionGetp7 = async () => {
+    await axios.post(urlpublicidad,{usuario,pub7}).then((response) => {
+      peticionGet();
+      setModalVisible7(false);
+    });
+  };
+
+  const peticionGetp8 = async () => {
+    await axios.post(urlpublicidad,{usuario,pub8}).then((response) => {
+      peticionGet();
+      setModalVisible8(false);
+    });
+  };
+
+  const montodepositado = data.sumadedepositos;
+  const claim = montodepositado*porc;
   
   useEffect(() => {
     peticionGet();
@@ -75,7 +120,7 @@ const Tareas = ({ navigation }) => {
         marginBottom: 10,
   
       }}>
-        Las tareas se activaran cada 24 horas, recibe recompensas por ver la publicidad de los anunciantes.
+        Las tareas se activaran despues del reinicio del servidor cada 24 horas, recibe recompensas por ver la publicidad de los anunciantes.
       </Text>
 
       {data.p1 > 0 &&
@@ -115,7 +160,7 @@ const Tareas = ({ navigation }) => {
               />
                <Text style={{
                marginLeft:11,
-              }}>$0.50</Text>
+              }}>${claim.toFixed(2)}</Text>
             </Text>
             <TouchableOpacity onPress={()=>setModalVisible(!modalVisible)}
             style={{
@@ -175,7 +220,7 @@ const Tareas = ({ navigation }) => {
               />
                <Text style={{
                marginLeft:11,
-              }}>$0.50</Text>
+              }}>${claim.toFixed(2)}</Text>
             </Text>
             <TouchableOpacity onPress={()=>setModalVisible2(!modalVisible2)}
             style={{
@@ -234,7 +279,7 @@ const Tareas = ({ navigation }) => {
               />
                <Text style={{
                marginLeft:11,
-              }}>$0.50</Text>
+              }}>${claim.toFixed(2)}</Text>
             </Text>
             <TouchableOpacity onPress={()=>setModalVisible3(!modalVisible3)}
             style={{
@@ -293,9 +338,366 @@ const Tareas = ({ navigation }) => {
               />
                <Text style={{
                marginLeft:11,
-              }}>$0.50</Text>
+              }}>${claim.toFixed(2)}</Text>
             </Text>
             <TouchableOpacity onPress={()=>setModalVisible4(!modalVisible4)}
+            style={{
+              backgroundColor: '#16c25e',
+              padding:8,
+              width: 100,
+              borderRadius: 7,
+            }}>
+            <Text style={{
+              color: '#fff',
+              textAlign: 'center',
+              fontSize: 14,
+            }}>
+
+               Haz Click
+            </Text>
+          </TouchableOpacity>
+          </View>
+
+        </View>
+       }
+     
+     { data.p5 > 0 && data.calificacion == "Agente Vip" &&
+      <View style={styles.listem}>
+        <View style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}>
+          <Text
+            style={{
+              color: '#07092c',
+              fontSize: 12,
+              fontWeight: 'bold',
+              textTransform: 'uppercase',
+              marginBottom: 10,
+            }}>
+          Ver Publicidad
+            
+          </Text>
+          
+          </View>
+          
+          <View style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}>
+             
+            <Text
+              style={{
+                color: '#07092c',
+                fontWeight: 'bold',
+                fontSize: 24,
+              }}>
+              <Image
+                source={p5}
+                style={{ width: 30, height: 30}}
+              />
+               <Text style={{
+               marginLeft:11,
+              }}>${claim.toFixed(2)}</Text>
+            </Text>
+            <TouchableOpacity onPress={()=>setModalVisible5(!modalVisible5)}
+            style={{
+              backgroundColor: '#16c25e',
+              padding:8,
+              width: 100,
+              borderRadius: 7,
+            }}>
+            <Text style={{
+              color: '#fff',
+              textAlign: 'center',
+              fontSize: 14,
+            }}>
+
+              Haz Click
+            </Text>
+          </TouchableOpacity>
+          </View>
+
+        </View>
+       }
+    
+     {data.p6 > 0 && data.calificacion == "Agente Vip" &&
+        <View style={styles.listem}>
+        <View style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}>
+          <Text
+            style={{
+              color: '#07092c',
+              fontSize: 12,
+              fontWeight: 'bold',
+              textTransform: 'uppercase',
+              marginBottom: 10,
+            }}>
+          Ver Publicidad
+            
+          </Text>
+          
+          </View>
+          
+          <View style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}>
+             
+            <Text
+              style={{
+                color: '#07092c',
+                fontWeight: 'bold',
+                fontSize: 24,
+              }}>
+              <Image
+                source={p6}
+                style={{ width: 30, height: 30}}
+              />
+               <Text style={{
+               marginLeft:11,
+              }}>${claim.toFixed(2)}</Text>
+            </Text>
+            <TouchableOpacity onPress={()=>setModalVisible6(!modalVisible6)}
+            style={{
+              backgroundColor: '#16c25e',
+              padding:8,
+              width: 100,
+              borderRadius: 7,
+            }}>
+            <Text style={{
+              color: '#fff',
+              textAlign: 'center',
+              fontSize: 14,
+            }}>
+
+              Haz Click
+            </Text>
+          </TouchableOpacity>
+          </View>
+
+        </View>   
+      }
+
+    {data.p5 > 0 && data.calificacion == "Agente Superior" &&
+      <View style={styles.listem}>
+        <View style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}>
+          <Text
+            style={{
+              color: '#07092c',
+              fontSize: 12,
+              fontWeight: 'bold',
+              textTransform: 'uppercase',
+              marginBottom: 10,
+            }}>
+          Ver Publicidad
+            
+          </Text>
+          
+          </View>
+          
+          <View style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}>
+             
+            <Text
+              style={{
+                color: '#07092c',
+                fontWeight: 'bold',
+                fontSize: 24,
+              }}>
+              <Image
+                source={p5}
+                style={{ width: 30, height: 30}}
+              />
+               <Text style={{
+               marginLeft:11,
+              }}>${claim.toFixed(2)}</Text>
+            </Text>
+            <TouchableOpacity onPress={()=>setModalVisible5(!modalVisible5)}
+            style={{
+              backgroundColor: '#16c25e',
+              padding:8,
+              width: 100,
+              borderRadius: 7,
+            }}>
+            <Text style={{
+              color: '#fff',
+              textAlign: 'center',
+              fontSize: 14,
+            }}>
+
+              Haz Click
+            </Text>
+          </TouchableOpacity>
+          </View>
+
+        </View>
+      }
+     { data.p6 > 0 && data.calificacion == "Agente Superior" &&
+        <View style={styles.listem}>
+        <View style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}>
+          <Text
+            style={{
+              color: '#07092c',
+              fontSize: 12,
+              fontWeight: 'bold',
+              textTransform: 'uppercase',
+              marginBottom: 10,
+            }}>
+          Ver Publicidad
+            
+          </Text>
+          
+          </View>
+          
+          <View style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}>
+             
+            <Text
+              style={{
+                color: '#07092c',
+                fontWeight: 'bold',
+                fontSize: 24,
+              }}>
+              <Image
+                source={p6}
+                style={{ width: 30, height: 30}}
+              />
+               <Text style={{
+               marginLeft:11,
+              }}>${claim.toFixed(2)}</Text>
+            </Text>
+            <TouchableOpacity onPress={()=>setModalVisible6(!modalVisible6)}
+            style={{
+              backgroundColor: '#16c25e',
+              padding:8,
+              width: 100,
+              borderRadius: 7,
+            }}>
+            <Text style={{
+              color: '#fff',
+              textAlign: 'center',
+              fontSize: 14,
+            }}>
+
+              Haz Click
+            </Text>
+          </TouchableOpacity>
+          </View>
+
+        </View>  
+    }
+      {data.p7 > 0 && data.calificacion == "Agente Superior"  &&
+        <View style={styles.listem}>
+        <View style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}>
+          <Text
+            style={{
+              color: '#07092c',
+              fontSize: 12,
+              fontWeight: 'bold',
+              textTransform: 'uppercase',
+              marginBottom: 10,
+            }}>
+          Ver Publicidad
+            
+          </Text>
+          
+          </View>
+          
+          <View style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}>
+             
+            <Text
+              style={{
+                color: '#07092c',
+                fontWeight: 'bold',
+                fontSize: 24,
+              }}>
+              <Image
+                source={p7}
+                style={{ width: 30, height: 30}}
+              />
+               <Text style={{
+               marginLeft:11,
+              }}>${claim.toFixed(2)}</Text>
+            </Text>
+            <TouchableOpacity onPress={()=>setModalVisible7(!modalVisible7)}
+            style={{
+              backgroundColor: '#16c25e',
+              padding:8,
+              width: 100,
+              borderRadius: 7,
+            }}>
+            <Text style={{
+              color: '#fff',
+              textAlign: 'center',
+              fontSize: 14,
+            }}>
+
+               Haz Click
+            </Text>
+          </TouchableOpacity>
+          </View>
+
+        </View>
+      }
+       {data.p8 > 0 && data.calificacion == "Agente Superior"  &&
+        <View style={styles.listem}>
+        <View style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}>
+          <Text
+            style={{
+              color: '#07092c',
+              fontSize: 12,
+              fontWeight: 'bold',
+              textTransform: 'uppercase',
+              marginBottom: 10,
+            }}>
+          Ver Publicidad
+            
+          </Text>
+          
+          </View>
+          
+          <View style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}>
+             
+            <Text
+              style={{
+                color: '#07092c',
+                fontWeight: 'bold',
+                fontSize: 24,
+              }}>
+              <Image
+                source={p8}
+                style={{ width: 30, height: 30}}
+              />
+               <Text style={{
+               marginLeft:11,
+              }}>${claim.toFixed(2)}</Text>
+            </Text>
+            <TouchableOpacity onPress={()=>setModalVisible8(!modalVisible8)}
             style={{
               backgroundColor: '#16c25e',
               padding:8,
@@ -455,6 +857,154 @@ const Tareas = ({ navigation }) => {
               <Pressable
                 style={[styles.button, styles.buttonfiltrar]}
                 onPress={peticionGetp4}
+              >
+                <Text style={styles.textStyle}>Claim</Text>
+              </Pressable>
+              </View>
+            </View>
+          </View>
+        </Modal>
+      </View>
+
+      <View style={styles.centeredView}>
+        <Modal
+          animationType="fade"
+          transparent={true}
+          visible={modalVisible5}
+          statusBarTranslucent={true}
+          onRequestClose={() => {
+            Alert.alert("Modal has been closed.");
+            setModalVisible5(!modalVisible5);
+          }}
+        >
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+            <Image
+                source={p5}
+                style={{ width: 310, height: 210}}
+              />
+
+              <View style={{flexDirection: 'row',justifyContent: 'space-between'}}>
+              <Pressable
+                style={[styles.button, styles.buttonClose]}
+                onPress={() => setModalVisible5(!modalVisible5)}
+              >
+                <Text style={styles.textStyle}>Mas tarde</Text>
+              </Pressable>
+              <Pressable
+                style={[styles.button, styles.buttonfiltrar]}
+                onPress={peticionGetp5}
+              >
+                <Text style={styles.textStyle}>Claim</Text>
+              </Pressable>
+              </View>
+            </View>
+          </View>
+        </Modal>
+      </View>
+
+      <View style={styles.centeredView}>
+        <Modal
+          animationType="fade"
+          transparent={true}
+          visible={modalVisible6}
+          statusBarTranslucent={true}
+          onRequestClose={() => {
+            Alert.alert("Modal has been closed.");
+            setModalVisible6(!modalVisible6);
+          }}
+        >
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+            <Image
+                source={p6}
+                style={{ width: 310, height: 210}}
+              />
+
+              <View style={{flexDirection: 'row',justifyContent: 'space-between'}}>
+              <Pressable
+                style={[styles.button, styles.buttonClose]}
+                onPress={() => setModalVisible6(!modalVisible6)}
+              >
+                <Text style={styles.textStyle}>Mas tarde</Text>
+              </Pressable>
+              <Pressable
+                style={[styles.button, styles.buttonfiltrar]}
+                onPress={peticionGetp6}
+              >
+                <Text style={styles.textStyle}>Claim</Text>
+              </Pressable>
+              </View>
+            </View>
+          </View>
+        </Modal>
+      </View>
+
+      <View style={styles.centeredView}>
+        <Modal
+          animationType="fade"
+          transparent={true}
+          visible={modalVisible7}
+          statusBarTranslucent={true}
+          onRequestClose={() => {
+            Alert.alert("Modal has been closed.");
+            setModalVisible7(!modalVisible7);
+          }}
+        >
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+            <Image
+                source={p7}
+                style={{ width: 310, height: 210}}
+              />
+
+              <View style={{flexDirection: 'row',justifyContent: 'space-between'}}>
+              <Pressable
+                style={[styles.button, styles.buttonClose]}
+                onPress={() => setModalVisible7(!modalVisible7)}
+              >
+                <Text style={styles.textStyle}>Mas tarde</Text>
+              </Pressable>
+              <Pressable
+                style={[styles.button, styles.buttonfiltrar]}
+                onPress={peticionGetp7}
+              >
+                <Text style={styles.textStyle}>Claim</Text>
+              </Pressable>
+              </View>
+            </View>
+          </View>
+        </Modal>
+      </View>
+
+      <View style={styles.centeredView}>
+        <Modal
+          animationType="fade"
+          transparent={true}
+          visible={modalVisible8}
+          statusBarTranslucent={true}
+          onRequestClose={() => {
+            Alert.alert("Modal has been closed.");
+            setModalVisible8(!modalVisible8);
+          }}
+        >
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+            <Image
+                source={p8}
+                style={{ width: 310, height: 210}}
+              />
+
+              <View style={{flexDirection: 'row',justifyContent: 'space-between'}}>
+              <Pressable
+                style={[styles.button, styles.buttonClose]}
+                onPress={() => setModalVisible8(!modalVisible8)}
+              >
+                <Text style={styles.textStyle}>Mas tarde</Text>
+              </Pressable>
+              <Pressable
+                style={[styles.button, styles.buttonfiltrar]}
+                onPress={peticionGetp8}
               >
                 <Text style={styles.textStyle}>Claim</Text>
               </Pressable>

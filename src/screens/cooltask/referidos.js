@@ -6,7 +6,8 @@ import {
   TouchableOpacity,
   Image,
   StyleSheet,
-  ActivityIndicator
+  ActivityIndicator,
+  ScrollView
 } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -39,6 +40,7 @@ const Referidos = ({ navigation }) => {
   }, []);
 
   return (
+    <ScrollView>
     <View style={{ marginHorizontal: 10, marginTop: 20 }}>
       <View
         style={{
@@ -57,7 +59,7 @@ const Referidos = ({ navigation }) => {
         >
           Mi Equipo
         </Text>
-
+     
         <Text
           style={{
             fontSize: 14,
@@ -70,6 +72,30 @@ const Referidos = ({ navigation }) => {
           Integrantes: {data.length}
         </Text>
       </View>
+
+      <View style={styles.listemboton}>
+      <TouchableOpacity onPress={() =>navigation.navigate('concurso')}
+        style={{
+          padding: 10,
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+        }}
+        >
+        <Text
+          style={{
+            color: '#fff',
+            fontSize: 14,
+            textAlign: 'center',
+            fontWeight: 'bold'
+          }}>
+          Concurso de referidos
+        </Text>
+        
+
+        <MaterialIcons name="arrow-forward-ios" size={18} color="#fff" />
+      </TouchableOpacity>
+      </View>
+      
       {Cargando ? (
         <Text
           style={{
@@ -134,7 +160,9 @@ const Referidos = ({ navigation }) => {
           </View>
         ))
       )}
+      
     </View>
+    </ScrollView>
   );
 };
 
@@ -147,5 +175,13 @@ const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 15,
   },
+  listemboton: {
+    marginTop: 20,
+    marginBottom: 10,
+    marginHorizontal: 15,
+    backgroundColor: '#fd8029',
+    padding: 10,
+    borderRadius: 15,
+  }
 });
 export default Referidos;
