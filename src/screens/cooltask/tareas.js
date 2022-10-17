@@ -104,6 +104,11 @@ const Tareas = ({ navigation }) => {
 
   const montodepositado = data.sumadedepositos;
   const claim = montodepositado*porc;
+
+  let today = new Date();
+
+  let now = today.toLocaleTimeString();
+ 
   
   useEffect(() => {
     peticionGet();
@@ -120,7 +125,19 @@ const Tareas = ({ navigation }) => {
         marginBottom: 10,
   
       }}>
-        Las tareas se activaran despues del reinicio del servidor cada 24 horas, recibe recompensas por ver la publicidad de los anunciantes.
+        Las tareas se activaran despues del reinicio del servidor cada 24 horas,
+         recibe recompensas por ver la publicidad de los anunciantes.
+      </Text>
+      <Text style={{
+        fontSize: 15,
+        color: '#000',
+        marginLeft: 14,
+        fontWeight:'bold',
+        marginRight: 14,
+        marginBottom: 10,
+  
+      }}>
+        Hora del servidor: {now}
       </Text>
 
       {data.p1 > 0 &&

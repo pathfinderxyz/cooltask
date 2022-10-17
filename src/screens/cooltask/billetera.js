@@ -19,11 +19,18 @@ const Billetera = ({ navigation }) => {
   const [datadeposito, setDatadeposito] = useState([]);
   const [Cargando, setCargando] = useState(true);
 
+  const [saldo, setSaldo] = useState(0);
+  const [sumdepositos, setSumdepositos] = useState(0);
+  const [ganancias, setGanancias] = useState(0);
+
   const usuario = userInfo[0].id;
 
   const peticionGet = async () => {
     await axios.get(url + "/" + usuario).then((response) => {
       setData(response.data[0]);
+      setSaldo(response.data[0].Monto);
+      setSumdepositos(response.data[0].sumadedepositos);
+      setGanancias(response.data[0].ganancias);
     });
   };
 
@@ -49,6 +56,16 @@ const Billetera = ({ navigation }) => {
     peticionGetDepositos();
     peticionGetRetiros();
   }, []);
+
+  const saldo2 = saldo*1;
+  const saldo3 = saldo2.toFixed(2);
+
+  const sumdepositos2 = sumdepositos*1;
+  const sumdepositos3 = sumdepositos2.toFixed(2);
+
+  const ganancias2 = ganancias*1;
+  const ganancias3 = ganancias2.toFixed(2);
+
   return (
     <ScrollView>
     <View style={{ marginHorizontal: 10}}>
@@ -91,13 +108,37 @@ const Billetera = ({ navigation }) => {
                 fontSize: 31,
                 marginBottom: 20,
               }}>
-              ${data.Monto} USDT
+              ${saldo3} USDT
             </Text>
+         
+              <Text
+                style={{
+                  color: "#07092c",
+                  fontSize: 13,
+                  fontWeight: "bold",
+                  marginBottom: 10,
+                  paddingHorizontal:20
+                }}
+              >
+                Depositos: {sumdepositos3} USDT
+              </Text>
+              <Text
+                style={{
+                  color: "green",
+                  fontSize: 13,
+                  fontWeight: "bold",
+                  marginBottom: 10,
+                  paddingHorizontal:20
+                }}
+              >
+                Ganancias: {ganancias3} USDT
+              </Text>
+          
             <TouchableOpacity onPress={() =>navigation.navigate('Retiro')}
             style={{
               backgroundColor: '#07092c',
               padding: 8,
-              width: 100,
+              width: 200,
               borderRadius: 7,
             }}>
             <Text style={{

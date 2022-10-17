@@ -42,7 +42,7 @@ const Compartir = ({ navigation }) => {
           <Text
             style={{
               color: '#07092c',
-              fontSize: 15,
+              fontSize: 17,
               fontWeight: 'bold',
               textTransform: 'uppercase',
               marginBottom: 10,
@@ -56,8 +56,9 @@ const Compartir = ({ navigation }) => {
             <Text
               style={{
                 color: '#ed8900',
-                fontWeight: '400',
-                fontSize: 19,
+                fontWeight: '700',
+                fontSize: 20,
+                marginTop: 10,
                 marginBottom: 30,
               }}>
              {micodigo}

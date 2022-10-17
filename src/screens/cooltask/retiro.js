@@ -41,13 +41,15 @@ const Retiro =  ({navigation})=> {
 
   const [Error, setError] = useState(false);
   const [Errorcantidad, setErrorcantidad] = useState(false);
+
+  const [ganancias, setGanancias] = useState(0);
   
 
   const validardatos = () => {
     setError(false);
     setErrorcantidad(false);
     if (Retiromonto !== null) {
-      if(Retiromonto > data.Monto || Retiromonto < 10 || data.wallet==""){
+      if(Retiromonto > data.ganancias || Retiromonto < 10 || data.wallet==""){
         setErrorcantidad(true);
       }else{
         setModalVisible(true);
@@ -74,12 +76,17 @@ const Retiro =  ({navigation})=> {
   const peticionGet = async () => {
     await axios.get(url + "/" + usuario).then((response) => {
       setData(response.data[0]);
+      setGanancias(response.data[0].ganancias);
     });
   };
   
   useEffect(async() => {
     await peticionGet();
   }, []);
+
+  const ganancias2 = ganancias*1;
+  const ganancias3 = ganancias2.toFixed(2);
+
 
   return (
     <ScrollView>
@@ -130,14 +137,13 @@ const Retiro =  ({navigation})=> {
             fontWeight: "500",
           }}
         >
-         Disponible: {data.Monto} usdt
+         Disponible: {ganancias3} usdt
         </Text>
 
         <InputField
           value={Retiromonto}
           onChangeText={(text) => setRetiromonto(text)}
         />
-      
 
       <TouchableOpacity onPress={validardatos}
             style={{
@@ -173,6 +179,8 @@ const Retiro =  ({navigation})=> {
           }}
         >
           * La cantidad minima de retiro es de 10 usdt.{'\n'}{'\n'}
+          * Solo se pueden retirar las ganancias generadas por las tareas diarias 
+          o por el porcentaje obtenido por la recarga de tu equipo.{'\n'}{'\n'}
           * Los Retiros pueden tardar de 2 a 6 Horas en hacerse efectivo tenga paciencia.{'\n'}{'\n'}
           * Los depositos seran realizados a la Wallet registrada en su cuenta, para registrar su wallet 
           vaya a la seccion Cuenta-Wallet-Vincular.

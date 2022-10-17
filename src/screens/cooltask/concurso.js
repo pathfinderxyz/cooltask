@@ -82,7 +82,7 @@ const Concurso = ({ navigation }) => {
                   marginBottom: 10,
                 }}
               >
-                Referidos: 3
+                Referidos: 4
               </Text>
             </View>
 
@@ -100,7 +100,7 @@ const Concurso = ({ navigation }) => {
                 }}
               >
                 <Ionicons name="person" color="orange" size={16} />{" "}
-                pathfinderxyz
+                JULES
               </Text>
             </View>
           </View>
@@ -130,7 +130,7 @@ const Concurso = ({ navigation }) => {
                   marginBottom: 10,
                 }}
               >
-                Referidos: 2
+                Referidos: 3
               </Text>
             </View>
 
@@ -148,7 +148,7 @@ const Concurso = ({ navigation }) => {
                 }}
               >
                 <Ionicons name="person" color="orange" size={16} />{" "}
-                Roxy
+                PATHFINDERXYZ
               </Text>
             </View>
           </View>
@@ -178,7 +178,7 @@ const Concurso = ({ navigation }) => {
                   marginBottom: 10,
                 }}
               >
-                Referidos: 2
+                Referidos: 3
               </Text>
             </View>
 
@@ -196,7 +196,7 @@ const Concurso = ({ navigation }) => {
                 }}
               >
                 <Ionicons name="person" color="orange" size={16} />{" "}
-                alexcisneros
+                ALEX CISNEROS
               </Text>
             </View>
           </View>
@@ -226,7 +226,7 @@ const Concurso = ({ navigation }) => {
                   marginBottom: 10,
                 }}
               >
-                Referidos: 2
+                Referidos: 3
               </Text>
             </View>
 
@@ -244,7 +244,7 @@ const Concurso = ({ navigation }) => {
                 }}
               >
                 <Ionicons name="person" color="orange" size={16} />{" "}
-                luis gomez
+                ROXY
               </Text>
             </View>
           </View>
@@ -292,7 +292,7 @@ const Concurso = ({ navigation }) => {
                 }}
               >
                 <Ionicons name="person" color="orange" size={16} />{" "}
-                manuel2022
+                BLACKJAM24
               </Text>
             </View>
           </View>

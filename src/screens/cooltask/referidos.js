@@ -126,7 +126,7 @@ const Referidos = ({ navigation }) => {
                   marginBottom: 10,
                 }}
               >
-                Integrantes: 0
+                Depositos: {item.sumadedepositos} USDT
               </Text>
               <Text
                 style={{

@@ -31,6 +31,9 @@ import Deposito from './../assets/botones/deposito.png';
 import Guia from './../assets/botones/guia-icono.png';
 import Monedas from './../assets/botones/monedas.png';
 import Nivel3 from './../assets/niveles/nivel3.png';
+import Nivel2 from './../assets/niveles/nivel2.png';
+import Nivel1 from './../assets/niveles/nivel1.png';
+import nivel4 from './../assets/niveles/nivel4.png';
 import { AuthContext } from '../context/AuthContext';
 
 /* const NavigatetoDetails = props => {
@@ -71,22 +74,30 @@ const Homeapp = ({ navigation }) => {
   const [cargando, setCargando] = useState(true);
   const [recargar, setRecargar] = useState(false);
 
+  const [saldo, setSaldo] = useState(0);
+
   const {userInfo} = useContext(AuthContext);
   const iduser= userInfo[0].id;
 
   const peticionGet = async () => {
     await axios.get(url + "/" + iduser).then((response) => {
       setData(response.data[0]);
+      setSaldo(response.data[0].Monto);
     });
   };
+
   setTimeout(()=>{
      setRecargar(!recargar);
 },2000);
 
+ 
 
   useEffect(() => {
    peticionGet();
   }, [recargar]);
+
+  const saldo2 = saldo*1;
+  const saldo3 = saldo2.toFixed(2);
 
   return (
     <ScrollView>
@@ -108,10 +119,30 @@ const Homeapp = ({ navigation }) => {
             {data.nombre}
             
           </Text>
+          {data.calificacion=="Agente Externo" &&
+          <Image
+                source={nivel4}
+                style={{ width: 60, height: 60 }}
+              />
+          }  
+          {data.calificacion=="Agente Interno" &&
           <Image
                 source={Nivel3}
                 style={{ width: 60, height: 60 }}
               />
+          } 
+           {data.calificacion=="Agente Vip" &&
+          <Image
+                source={Nivel2}
+                style={{ width: 60, height: 60 }}
+              />
+          } 
+          {data.calificacion=="Agente Superior" &&
+          <Image
+                source={Nivel1}
+                style={{ width: 60, height: 60 }}
+              />
+          } 
           </View>
           <Text
             style={{
@@ -136,7 +167,7 @@ const Homeapp = ({ navigation }) => {
               <Image
                 source={Monedas}
                 style={{ width: 30, height: 30 }}
-              />${data.Monto}
+              />${saldo3}
             
             </Text>
             <Text
