@@ -15,7 +15,7 @@ const Compartir = ({ navigation }) => {
   const micodigo=userInfo[0].micodigoinv;
 
   const copyToClipboard = async () => {
-    await Clipboard.setStringAsync("https://cooltask.homes/Registrar?codigo="+micodigo);
+    await Clipboard.setStringAsync(micodigo);
   };
 
   const fetchCopiedText = async () => {
@@ -47,7 +47,7 @@ const Compartir = ({ navigation }) => {
               textTransform: 'uppercase',
               marginBottom: 10,
             }}>
-         Enlace de Invitación
+         Codigo de Invitación
             
           </Text>
           
@@ -57,10 +57,10 @@ const Compartir = ({ navigation }) => {
               style={{
                 color: '#ed8900',
                 fontWeight: '400',
-                fontSize: 13,
+                fontSize: 19,
                 marginBottom: 30,
               }}>
-             https://cooltask.homes/Registrar?codigo={micodigo}
+             {micodigo}
             </Text>
             <TouchableOpacity onPress={copyToClipboard}
             style={{
@@ -88,7 +88,7 @@ const Compartir = ({ navigation }) => {
         borderColor:'#000'
   
       }}>
-        Haz que tus amigos se registren usando este enlace y se convertira en tu referido directo.
+        Haz que tus amigos se registren usando este codigo y se convertira en tu referido directo.
       </Text>
         </View>
 
