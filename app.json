@@ -1,6 +1,6 @@
 {
   "expo": {
-    "schema":"Cooltask",
+    "schema": "Cooltask",
     "name": "CoolTask",
     "slug": "CoolTask",
     "version": "1.0.0",
@@ -22,6 +22,8 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.jcarvajalz.CoolTask",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
@@ -31,6 +33,11 @@
       "favicon": "./assets/favicon.png"
     },
     "description": "Aplicacion CoolTask",
-    "githubUrl": "https://github.com/pathfinderxyz/cooltask.git"
+    "githubUrl": "https://github.com/pathfinderxyz/cooltask.git",
+    "extra": {
+      "eas": {
+        "projectId": "31961647-8f61-4208-aca1-ed56d9f87c22"
+      }
+    }
   }
 }
