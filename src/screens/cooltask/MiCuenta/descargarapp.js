@@ -6,7 +6,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from "react-native-vector-icons/Ionicons";
 import logo from './../../../assets/logo/cool.png';
 
-const url = "https://cooltask.homes";
+const url = "https://apk.cooltask.homes";
 
 const Descargarapp = ({ navigation }) => {
 
