@@ -7,6 +7,7 @@ import {
   Image,
   StyleSheet,
   ActivityIndicator,
+  StatusBar,
   ScrollView
 } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
@@ -41,7 +42,8 @@ const Referidos = ({ navigation }) => {
 
   return (
     <ScrollView>
-    <View style={{ marginHorizontal: 10, marginTop: 20 }}>
+      <StatusBar style="Light" backgroundColor="#0a1d60" />
+    <View  style={{ marginHorizontal: 10, marginTop: 20 }}>
       <View
         style={{
           flexDirection: "row",
@@ -111,7 +113,7 @@ const Referidos = ({ navigation }) => {
         </Text>
       ) : (
         data.map((item) => (
-          <View style={styles.listem}>
+          <View key={item} style={styles.listem}>
             <View
               style={{
                 flexDirection: "row",
@@ -124,6 +126,7 @@ const Referidos = ({ navigation }) => {
                   fontSize: 12,
                   fontWeight: "bold",
                   marginBottom: 10,
+                  
                 }}
               >
                 Depositos: {item.sumadedepositos} USDT

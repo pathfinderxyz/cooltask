@@ -3,7 +3,6 @@ import {View,Text, ActivityIndicator} from 'react-native';
 import { NavigationContainer, StackActions, StackNavigator } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Start from './start';
-import MyDrawer from './drawer';
 import { AuthContext } from './../context/AuthContext';
 import Home from '../screens/home';
 import Start2 from './start2';
@@ -42,7 +41,7 @@ const AppNav = () => {
  
   return (
     <NavigationContainer linking={linking}>
-        {userToken == null || userToken == undefined ? <Start/>: <MyDrawer/> }
+        {userToken == null || userToken == undefined ? <Start/>: <Tabs/> }
     </NavigationContainer>
   );
 }

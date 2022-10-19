@@ -11,7 +11,7 @@ import {
   ImageBackground,
   TextInput,
   StyleSheet,
-  TouchableOpacity,
+  TouchableOpacity
 } from "react-native";
 
 import axios from "axios";
@@ -26,6 +26,7 @@ import Guia from './../../assets/botones/guia-icono.png';
 import Monedas from './../../assets/botones/monedas.png';
 import Nivel3 from './../../assets/niveles/nivel3.png';
 import { AuthContext } from '../../context/AuthContext';
+import { StatusBar } from 'expo-status-bar';
 
 const url = "https://api.cooltask.homes/public/usuarios";
 
@@ -60,14 +61,22 @@ const Micuenta = ({ navigation }) => {
 
   return (
     <ScrollView>
+      <StatusBar style="Dark" backgroundColor="#0a1d60" />
     <View style={styles.container}>
        
         <View style={styles.listem}>
-        <View style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-          }}>
+       
+        
+          
           <Text
+              style={{
+                color: '#fff',
+                fontWeight: 'bold',
+                fontSize: 13,
+              }}>
+              {data.calificacion}
+            </Text>
+            <Text
             style={{
               color: '#fff',
               fontSize: 15,
@@ -78,16 +87,7 @@ const Micuenta = ({ navigation }) => {
             Usuario: {data.nombre}
             
           </Text>
-          
-          <Text
-              style={{
-                color: '#fff',
-                fontWeight: 'bold',
-                fontSize: 13,
-              }}>
-              {data.calificacion}
-            </Text>
-          </View>
+   
         
           <View style={{
             flexDirection: "row",

@@ -13,6 +13,7 @@ import p7 from './../../assets/publicidad/hoy/p7.png';
 import p8 from './../../assets/publicidad/hoy/p8.png';
 import { AuthContext } from './../../context/AuthContext';
 import axios from "axios";
+import { StatusBar } from 'expo-status-bar';
 
 const url = "https://api.cooltask.homes/public/usuarios";
 const urlpublicidad = "https://api.cooltask.homes/public/publicidad";
@@ -115,6 +116,7 @@ const Tareas = ({ navigation }) => {
   }, []);
   return (
     <ScrollView>
+      <StatusBar style="Dark" backgroundColor="#0a1d60" />
     <View style={{ marginHorizontal: 10, marginTop: 20 }}>
 
       <Text style={{

@@ -13,14 +13,6 @@
       },
       "distribution": "internal"
     },
-    "preview2": {
-      "android": {
-        "gradleCommand": ":app:assembleRelease"
-      }
-    },
-    "preview3": {
-      "developmentClient": true
-    },
     "production": {}
   },
   "submit": {

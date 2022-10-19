@@ -65,7 +65,7 @@ const CustomDrawer = props => {
               style={{
                 fontSize: 15,
                 marginLeft: 5,
-                colo:'#333',
+                color:'#333',
               }}>
               Salir
             </Text>

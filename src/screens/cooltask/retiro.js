@@ -80,8 +80,8 @@ const Retiro =  ({navigation})=> {
     });
   };
   
-  useEffect(async() => {
-    await peticionGet();
+  useEffect(() => {
+    peticionGet();
   }, []);
 
   const ganancias2 = ganancias*1;

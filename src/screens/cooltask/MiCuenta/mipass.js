@@ -65,8 +65,8 @@ const Mipass= ({ navigation, route }) => {
     });
   };
 
-useEffect(async() => {
-   await peticionGet();
+useEffect(() => {
+   peticionGet();
 }, []);
 
 

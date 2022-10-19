@@ -550,7 +550,7 @@ const styles = StyleSheet.create({
   container2: {
     marginTop:-4,
     justifyContent: "center",
-    backgroundColor: '#07092c',
+    backgroundColor: '#0a1d60',
     paddingBottom:7
   },
   listem: {

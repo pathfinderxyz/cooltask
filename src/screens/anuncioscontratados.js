@@ -29,8 +29,8 @@ const AnunciosContratados = ({navigation, route}) => {
 
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(async () => {
-    await peticionGet();
+  useEffect( () => {
+    peticionGet();
   }, []);
 
   return (

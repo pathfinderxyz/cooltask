@@ -1,9 +1,9 @@
 {
   "expo": {
-    "schema": "Cooltask",
-    "name": "CoolTask",
+    "name": "cooltask",
+    "scheme":"cooltask",
     "slug": "CoolTask",
-    "version": "1.0.0",
+    "version": "2.1.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -23,7 +23,7 @@
     },
     "android": {
       "package": "com.jcarvajalz.CoolTask",
-      "versionCode": 1,
+      "versionCode": 2,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"

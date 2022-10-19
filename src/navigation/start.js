@@ -3,7 +3,6 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Login from '../screens/login';
 import Registrar from './../screens/registrar'
 import Home from '../screens/home';
-import MyDrawer from './drawer';
 import Onboarding from '../screens/OnboardingScreen';
 import GameDetailsScreen from '../screens/DetallesJuegos';
 import Splash from '../screens/splash';
@@ -21,7 +20,7 @@ const Stack = createNativeStackNavigator();
 const Start= () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Splash" component={Splash} options={{headerShown: false}}/>
+      
       <Stack.Screen name="Onboarding" component={Onboarding} options={{headerShown: false}}/>
       <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
       <Stack.Screen name="SeleccionarRegistro" component={SeleccionarRegistro} options={{headerShown: false}} />
